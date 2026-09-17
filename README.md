@@ -9,7 +9,7 @@ An interactive, single-page web dashboard designed to simplify your weekly colle
 ## Live Demo
 
 Check out the live interactive application hosted on GitHub Pages:
-👉 **[https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/](https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/)**
+👉 **[https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/](https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/)**
 
 ---
 
