@@ -17,11 +17,11 @@ Check out the live interactive application hosted on GitHub Pages:
 ## ✨ Features & Functionality
 
 * **Dual Schedule Visualizations**:
-  * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., Big Ten Network, ESPNU, CBSSN, Local Network Affiliates).
+  * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., Big Ten Network, ESPN2, ESPNU).
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, FloHockey.tv, NCHC.tv, CCHA TV).
 * **Interactive Slicers & Adaptive Filters**:
   * **Day / Date Selection**: Instant focus on specific game days.
-  * **Top 25 Toggle**: One-click filter to highlight USCHO Top 20 ranked matchups.
+  * **Top 20 Toggle**: One-click filter to highlight USCHO Top 20 ranked matchups.
   * **Kickoff Time Slicer**: Dynamic multi-select filter adapting to available puck drop slots for selected days.
   * **Conference Slicer**: Multi-select conference filter (Big Ten, CCHA, NCHC, etc.) that dynamically updates based on active date, time, and ranking constraints.
 * **Art Deco Dark Theme**:
