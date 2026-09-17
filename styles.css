@@ -53,7 +53,7 @@ body::before {
   height: auto;
   display: block;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(56, 182, 255, 0.25);
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(56, 182, 255, 0.25);
 }
 
 /* Flexbox Layout Enforcements */
