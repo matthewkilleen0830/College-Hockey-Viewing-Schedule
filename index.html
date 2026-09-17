@@ -190,9 +190,9 @@
     ];
 
     // Shared X-Axis Time Config (Minutes from Midnight) for Vertical Alignment Across Charts
-    const SHARED_X_AXIS_VALS = [840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
+    const SHARED_X_AXIS_VALS = [900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
     const SHARED_X_AXIS_TEXT = [
-      '2:00 PM', '3:00 PM', '4:00 PM', 
+      '3:00 PM', '4:00 PM', 
       '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
     ];
 
@@ -817,7 +817,7 @@
           side: 'top',
           type: 'linear',
           // range: [660, 1500],
-          range: [810, 1470],
+          range: [900, 1475],
           tickmode: 'array',
           tickvals: SHARED_X_AXIS_VALS,
           ticktext: SHARED_X_AXIS_TEXT,
@@ -842,7 +842,7 @@
           tickvals: yTicks,
           ticktext: yTickLabels,
           tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' },
-          // automargin: true
+          automargin: false
         },
         showlegend: false
       };
