@@ -1,0 +1,877 @@
+<!-- DocType declaration -->
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Define header and page title -->
+<head>
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+
+  <!-- =========================================================
+     PRIMARY SEO / SEARCH ENGINE METADATA
+     ========================================================= -->
+
+<title>College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four</title>
+
+<meta name="description" content="Find this week's college hockey TV schedule and viewing guide. See face-off times, ranked matchups, broadcast networks, streaming games, USCHO Top 20 teams, and conference schedules in one interactive dashboard.">
+<meta name="author" content="Matthew Killeen">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/">
+
+<!-- =========================================================
+     OPEN GRAPH / SOCIAL SHARING
+     ========================================================= -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
+<meta property="og:description" content="Interactive college hockey viewing guide with puck drop times, TV networks, streaming services, ranked matchups, USCHO Top 20 teams, and conference filters.">
+<meta property="og:url" content="https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/">
+<meta property="og:site_name" content="Road to the Frozen Four">
+<meta property="og:image" content="https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/images/college-football-viewing-guide.jpg">
+<meta property="og:image:alt" content="College hockey TV schedule and viewing guide dashboard">
+
+<!-- =========================================================
+     X / TWITTER CARD
+     ========================================================= -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
+<meta name="twitter:description" content="Interactive weekly college hockey TV and streaming schedule with puck drop times, ranked matchups, USCHO Top 20 teams, networks, and conference filters.">
+<meta name="twitter:image" content="https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/images/college-football-viewing-guide.jpg">
+<meta name="twitter:image:alt" content="College hockey TV schedule and viewing guide dashboard">
+
+<!-- =========================================================
+     LANGUAGE / MOBILE
+     ========================================================= -->
+
+<meta name="language" content="English">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+<!-- =========================================================
+     STRUCTURED DATA
+     ========================================================= -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Road to the Frozen Four: College Hockey Viewing Guide",
+  "alternateName": [
+    "College Hockey TV Schedule",
+    "College Hockey Viewing Schedule",
+    "College Hockey TV Guide",
+    "Men's Hockey Viewing Guide"
+  ],
+  "url": "https://matthewkilleen0830.github.io/College-Football-Viewing-Schedule/",
+  "description": "Interactive weekly college hockey TV and streaming viewing guide showing puck drop times, broadcast networks, streaming providers, ranked matchups, USCHO Top 20 teams, and conference schedules.",
+  "applicationCategory": "SportsApplication",
+  "operatingSystem": "Web",
+  "browserRequirements": "Requires JavaScript",
+  "author": {
+    "@type": "Person",
+    "name": "Matthew Killeen",
+    "url": "https://matthewkilleen0830.github.io/resume/"
+  },
+  "isAccessibleForFree": true
+}
+</script>
+
+  <!-- Google tag (gtag.js)
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFCWTT0W0R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-WFCWTT0W0R');
+  </script> -->
+
+  <!-- Bootstrap Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Application Layout -->
+  <div class="container-fluid px-1 py-3 main-wrapper">
+
+    <!-- Header Banner Image -->
+    <header class="top-banner">
+      <img src="images/headerBanner.png" alt="Header Banner for Dashboard">
+    </header>
+
+    <div class="row g-3 flex-grow-1">
+
+      <!-- Slicer Selection Controls Section -->
+      <div class="col-md-2 align-self-start">
+        <div class="filter-panel">
+          <h5 class="mb-3">Week 1 Selections</h5>
+
+          <!-- Single-Select Date Slicer -->
+          <div class="mb-3">
+            <label for="dateFilter" class="form-label fw-semibold">Day/Date</label>
+            <select id="dateFilter" class="form-select"></select>
+          </div>
+
+          <!-- Ranked Teams Toggle Checkbox -->
+          <div class="mb-3 ranked-toggle-wrapper">
+            <div class="form-check d-flex align-items-center gap-2 ps-0">
+              <input class="form-check-input ms-0" type="checkbox" id="rankedFilter">
+              <label class="form-check-label fw-semibold mb-0" for="rankedFilter">
+                USCHO Top 20
+              </label>
+            </div>
+          </div>
+
+          <!-- Multiple-Select Start Time Filter (Adaptive to Date) -->
+          <div class="mb-3">
+            <label for="timeFilter" class="form-label fw-semibold">Puck Drop</label>
+            <div id="timeFilter" class="checkbox-panel"></div>
+          </div>
+
+          <!-- Multi-Select Checkbox Conference Slicer (Adaptive to Date + Time + Ranked) -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Conference</label>
+            <div id="conferenceFilter" class="checkbox-panel">
+              <!-- Checkboxes dynamically rendered via JavaScript -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Dashboard Visualization Display -->
+      <div class="col-md-10 charts-column">
+        
+        <!-- Traditional Networks Chart Container -->
+        <div class="chart-container top-chart" id="networkChartContainer">
+          <h6 class="mb-2 chart-title">Linear Broadcast Networks (all times Central Time)</h6>
+          <div id="barChart" class="plotly-chart"></div>
+        </div>
+
+        <!-- Streaming Networks Chart Container -->
+        <div class="chart-container bottom-chart" id="digitalChartContainer">
+          <h6 class="mb-2 chart-title">Digital Streaming Platforms (all times Central Time)</h6>
+          <div id="digitalChart" class="plotly-chart"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+
+  <!-- Enable D3.js and Plotly Dependencies -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-4.0.0.min.js"></script>
+
+  <!-- Dashboard Controller Script -->
+  <script>
+    // =========================================================================
+    // GLOBAL CONSTANTS & CONFIGURATION
+    // =========================================================================
+
+    // List of networks classified as streaming
+    const DIGITAL_NETWORKS = ["ESPN+", "FloHockey.tv", "NCHC.tv", "B1G+", "CCHA TV", "Peacock"];
+
+    // Preferred Conference Display Priority
+    const PREFERRED_CONF_ORDER = [
+      "AHA",
+      "Big Ten",
+      "CCHA",
+      "ECAC",
+      "Hockey East",
+      "Independents",
+      "NCHC"
+    ];
+
+    // Shared X-Axis Time Config (Minutes from Midnight) for Vertical Alignment Across Charts
+    const SHARED_X_AXIS_VALS = [780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
+    const SHARED_X_AXIS_TEXT = [
+      '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
+      '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
+    ];
+
+    // Lookup Table mapping Home Teams to Secondary Brand Colors due to actual home white sweaters
+    const TEAM_COLORS = {
+      
+    // Atlantic Hockey America
+    "Air Force": "#003087",
+    "Army": "#D4BF91",
+    "Bentley": "#00205B",
+    "Canisius": "#002D62",
+    "Holy Cross": "#60269E",
+    "Niagara": "#002D62",
+    "Robert Morris": "#00205B",
+    "RIT": "#F36E21",
+    "Sacred Heart": "#C8102E",
+
+    // Big Ten
+    "Michigan": "#00274C",
+    "Michigan State": "#18453B",
+    "Minnesota": "#7A003C",
+    "Notre Dame": "#0C2340",
+    "Ohio State": "#BB0000",
+    "Penn State": "#001E44",
+    "Wisconsin": "#C5050C",
+
+    // CCHA
+    "Augustana": "#002D62",
+    "Bemidji State": "#004B49",
+    "Bowling Green": "#4F2C1D",
+    "Ferris State": "#BA0C2F",
+    "Lake Superior": "#005A36", "Windsor": "#005A36",
+    "Michigan Tech": "#FFCD00",
+    "Minnesota State": "#4B2E83",
+    "Northern Michigan": "#006633",
+
+    // ECAC Hockey
+    "Brown": "#4E3629",
+    "Clarkson": "#004B49",
+    "Colgate": "#821019",
+    "Cornell": "#B31B1B",
+    "Dartmouth": "#00693E",
+    "Harvard": "#A51C30",
+    "Princeton": "#FF8F00",
+    "Quinnipiac": "#0A2240",
+    "RPI": "#D6001C",
+    "St. Lawrence": "#AF1E2D",
+    "Union": "#821019",
+    "Yale": "#00356B",
+
+    // Hockey East
+    "Boston College": "#98002E", "US Under-18": "#98002E",
+    "Boston University": "#CC0000",
+    "UConn": "#000E2E",
+    "Maine": "#003263",
+    "Massachusetts": "#881C1C",
+    "UMass Lowell": "#0067C5",
+    "Merrimack": "#00205B",
+    "New Hampshire": "#00205B",
+    "Northeastern": "#CC0000",
+    "Providence": "#000000",
+    "Vermont": "#005A36",
+
+    // NCHC
+    "Arizona State": "#8C1D40",
+    "Colorado College": "#CC9900",
+    "Denver": "#8B2332",
+    "Miami (Ohio)": "#B81137",
+    "Minnesota Duluth": "#4A121A",
+    "North Dakota": "#006A4E",
+    "Omaha": "#000000",
+    "St. Cloud State": "#CC0000",
+    "St. Thomas": "#512888",
+    "Western Michigan": "#5C1322",
+
+    // Division I Independents
+    "Alaska": "#00205B",
+    "Alaska-Anchorage": "#005A36",
+    "Lindenwood": "#B3A369",
+    "Long Island": "#69B3E7",
+    "Maryville (Mo)": "#C8102E",
+    "Stonehill": "#00205B"
+
+    };
+
+    // Cached DOM Reference Element map for performance optimization
+    const DOM = {
+      dateFilter: document.getElementById("dateFilter"),
+      timeFilter: document.getElementById("timeFilter"),
+      rankedFilter: document.getElementById("rankedFilter"),
+      conferenceFilter: document.getElementById("conferenceFilter")
+    };
+
+    // =========================================================================
+    // DATA INITIALIZATION & EVENT LISTENERS
+    // =========================================================================
+
+    d3.csv("currentWeek/01_weekFull.csv", raw => {
+      const clean = {};
+      Object.keys(raw).forEach(key => {
+        const normalizedKey = key.replace(/^\uFEFF/, "");
+        clean[normalizedKey] = raw[key];
+      });
+      return clean;
+    }).then(data => {
+      window.gameData = data;
+
+      // Initial render of all slicers & charts
+      const initialDate = getFirstAvailableDate(window.gameData);
+      updateDateSlicerOptions(window.gameData, initialDate);
+      
+      refreshAllSlicersExcept();
+      applyFilters();
+
+      // Primary Date Slicer Event Listener
+      DOM.dateFilter.addEventListener("change", () => {
+        refreshAllSlicersExcept("date");
+        applyFilters();
+      });
+
+      // Ranked Slicer Event Listener
+      DOM.rankedFilter.addEventListener("change", () => {
+        refreshAllSlicersExcept("ranked");
+        applyFilters();
+      });
+    });
+
+    // =========================================================================
+    // BIDIRECTIONAL CROSS-FILTERING ARCHITECTURE
+    // =========================================================================
+
+    // Returns the active filter state across all slicers
+    function getActiveSelections() {
+      const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
+      const isRankedOnly = DOM.rankedFilter ? DOM.rankedFilter.checked : false;
+
+      const timeAllChecked = document.getElementById("time_all")?.checked ?? true;
+      const selectedTimes = timeAllChecked ? [] : Array.from(
+        document.querySelectorAll("#timeFilter .time-checkbox:checked")
+      ).map(cb => cb.value);
+
+      const confAllChecked = document.getElementById("conf_all")?.checked ?? true;
+      const selectedConferences = confAllChecked ? [] : Array.from(
+        document.querySelectorAll("#conferenceFilter .conf-checkbox:checked")
+      ).map(cb => cb.value);
+
+      return {
+        date: selectedDate,
+        ranked: isRankedOnly,
+        times: selectedTimes,
+        isTimeAll: timeAllChecked,
+        conferences: selectedConferences,
+        isConfAll: confAllChecked
+      };
+    }
+
+    // Returns a subset of gameData filtered by all slicers EXCEPT the one specified by 'excludedFilter'
+    function getFilteredDataExcept(excludedFilter = null) {
+      const state = getActiveSelections();
+
+      return window.gameData.filter(d => {
+        // Date filter
+        if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
+          return false;
+        }
+
+        // Puck Drop Time filter
+        if (excludedFilter !== "time") {
+          // If 'All Times' is unchecked and no individual time boxes are checked -> return no games
+          if (!state.isTimeAll && state.times.length === 0) return false;
+
+          // If specific times are selected, ensure game matches one of them
+          if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
+        }
+
+        // Ranked filter
+        if (excludedFilter !== "ranked" && state.ranked) {
+          if (d.Top_25 !== "Y") return false;
+        }
+
+        // Conference filter
+        if (excludedFilter !== "conference") {
+          // If 'All Conferences' is unchecked and no individual conference boxes are checked -> return no games
+          if (!state.isConfAll && state.conferences.length === 0) return false;
+
+          // If specific conferences are selected, ensure game matches
+          if (!state.isConfAll) {
+            const vConf = d.Visitor_Conference?.trim();
+            const hConf = d.Home_Conference?.trim();
+            if (!state.conferences.includes(vConf) && !state.conferences.includes(hConf)) return false;
+          }
+        }
+
+        return true;
+      });
+    }
+
+    // Re-computes available options for all slicers while preserving user selections where applicable
+    function refreshAllSlicersExcept(targetSource = null) {
+      const currentState = getActiveSelections();
+
+      // 1. Refresh Time options based on all filters EXCEPT Time
+      if (targetSource !== "time") {
+        const timeSubset = getFilteredDataExcept("time");
+        updateTimeSlicer(timeSubset, currentState.times, currentState.isTimeAll);
+      }
+
+      // 2. Refresh Ranked checkbox toggle availability based on all filters EXCEPT Ranked
+      if (targetSource !== "ranked") {
+        const rankedSubset = getFilteredDataExcept("ranked");
+        updateRankedSlicer(rankedSubset, currentState.ranked);
+      }
+
+      // 3. Refresh Conference options based on all filters EXCEPT Conference
+      if (targetSource !== "conference") {
+        const confSubset = getFilteredDataExcept("conference");
+        updateConferenceSlicer(confSubset, currentState.conferences, currentState.isConfAll);
+      }
+    }
+
+    // Landing page to load on today or first upcoming day with games
+    // Extract distinct dates chronologically and select today's date or the earliest upcoming date
+    function getFirstAvailableDate(allData) {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+
+      // Start of today in local time
+      const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      // Collect unique dates from CSV
+      const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
+
+      if (uniqueDates.length === 0) return null;
+
+      const parsedDates = uniqueDates.map(dateStr => {
+        // Strip out day-of-week abbreviations if present (e.g., "Fri, Sep 11" -> "Sep 11")
+        let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+
+        // If string lacks a 4-digit year, append current year to avoid defaulting to 2001
+        if (!/\b20\d{2}\b/.test(cleanStr)) {
+          cleanStr = `${cleanStr}, ${currentYear}`;
+        }
+
+        const parsed = new Date(cleanStr);
+        // Normalize time to midnight local time
+        const normalized = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
+
+        return { originalStr: dateStr, parsedDate: normalized };
+      });
+
+      // Sort chronologically
+      parsedDates.sort((a, b) => a.parsedDate - b.parsedDate);
+
+      // Find the first date in dataset that is >= startOfToday (includes today)
+      const upcoming = parsedDates.find(item => item.parsedDate.getTime() >= startOfToday.getTime());
+
+      // Return today/upcoming date if found; otherwise fallback to the latest date available
+      return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
+    }
+
+    // Populate Date selection dropdown
+    function updateDateSlicerOptions(allData, selectedDate) {
+      const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
+
+      const currentYear = new Date().getFullYear();
+      uniqueDates.sort((a, b) => {
+        let cleanA = a.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+        let cleanB = b.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
+        if (!/\b20\d{2}\b/.test(cleanA)) cleanA = `${cleanA}, ${currentYear}`;
+        if (!/\b20\d{2}\b/.test(cleanB)) cleanB = `${cleanB}, ${currentYear}`;
+        return new Date(cleanA) - new Date(cleanB);
+      });
+
+      DOM.dateFilter.innerHTML = "";
+      uniqueDates.forEach(date => {
+        const opt = document.createElement("option");
+        opt.value = date;
+        opt.textContent = date;
+        DOM.dateFilter.appendChild(opt);
+      });
+
+      if (selectedDate && uniqueDates.includes(selectedDate)) {
+        DOM.dateFilter.value = selectedDate;
+      } else if (uniqueDates.length > 0) {
+        DOM.dateFilter.value = uniqueDates[0];
+      }
+    }
+
+    // Build multi-select Puck Drop Time checkboxes dynamically
+    function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
+      const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
+        .filter(Boolean)
+        .sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
+
+      DOM.timeFilter.innerHTML = "";
+
+      if (uniqueTimes.length === 0) {
+        DOM.timeFilter.innerHTML = `<div class="text-muted small p-1">No times available</div>`;
+        return;
+      }
+
+      // Master Toggle Element
+      const allDiv = document.createElement("div");
+      allDiv.className = "form-check border-bottom pb-1 mb-2";
+      allDiv.innerHTML = `
+        <input class="form-check-input" type="checkbox" id="time_all" ${isAllChecked ? 'checked' : ''}>
+        <label class="form-check-label fw-bold" for="time_all">All Times</label>
+      `;
+      DOM.timeFilter.appendChild(allDiv);
+
+      // Individual Time Checkboxes
+      uniqueTimes.forEach((time, idx) => {
+        const isChecked = isAllChecked || selectedTimes.includes(time);
+        const div = document.createElement("div");
+        div.className = "form-check";
+        div.innerHTML = `
+          <input class="form-check-input time-checkbox" type="checkbox" value="${time}" id="time_${idx}" ${isChecked ? 'checked' : ''}>
+          <label class="form-check-label" for="time_${idx}">${time}</label>
+        `;
+        DOM.timeFilter.appendChild(div);
+      });
+
+      // Attach Event Listeners
+      const allCheckbox = document.getElementById("time_all");
+      const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
+
+      allCheckbox.addEventListener("change", (e) => {
+        itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+        refreshAllSlicersExcept("time");
+        applyFilters();
+      });
+
+      itemCheckboxes.forEach(cb => {
+        cb.addEventListener("change", () => {
+          allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                               Array.from(itemCheckboxes).every(item => item.checked);
+          refreshAllSlicersExcept("time");
+          applyFilters();
+        });
+      });
+    }
+
+    // Update Ranked Matches checkbox state & availability based on data context
+    function updateRankedSlicer(filteredData, wasChecked) {
+      const hasRankedGames = filteredData.some(d => d.Top_25 === "Y");
+      
+      DOM.rankedFilter.checked = wasChecked && hasRankedGames;
+      DOM.rankedFilter.disabled = !hasRankedGames;
+    }
+
+    // Build individual conference checkboxes dynamically
+    function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
+      const extractedConfs = new Set();
+      filteredData.forEach(d => {
+        if (d.Visitor_Conference) extractedConfs.add(d.Visitor_Conference.trim());
+        if (d.Home_Conference) extractedConfs.add(d.Home_Conference.trim());
+      });
+
+      const uniqueConfs = Array.from(extractedConfs).filter(Boolean);
+
+      const priorityConfs = PREFERRED_CONF_ORDER.filter(conf => uniqueConfs.includes(conf));
+      const remainingConfs = uniqueConfs
+        .filter(conf => !PREFERRED_CONF_ORDER.includes(conf))
+        .sort((a, b) => a.localeCompare(b));
+
+      const orderedConfs = [...priorityConfs, ...remainingConfs];
+
+      DOM.conferenceFilter.innerHTML = "";
+
+      if (orderedConfs.length === 0) {
+        DOM.conferenceFilter.innerHTML = `<div class="text-muted small p-1">No conferences available</div>`;
+        return;
+      }
+
+      const allDiv = document.createElement("div");
+      allDiv.className = "form-check border-bottom pb-1 mb-2";
+      allDiv.innerHTML = `
+        <input class="form-check-input" type="checkbox" id="conf_all" ${isAllChecked ? 'checked' : ''}>
+        <label class="form-check-label fw-bold" for="conf_all">All Conferences</label>
+      `;
+      DOM.conferenceFilter.appendChild(allDiv);
+
+      orderedConfs.forEach((conf, idx) => {
+        const isChecked = isAllChecked || selectedConferences.includes(conf);
+        const div = document.createElement("div");
+        div.className = "form-check";
+        div.innerHTML = `
+          <input class="form-check-input conf-checkbox" type="checkbox" value="${conf}" id="conf_${idx}" ${isChecked ? 'checked' : ''}>
+          <label class="form-check-label" for="conf_${idx}">${conf}</label>
+        `;
+        DOM.conferenceFilter.appendChild(div);
+      });
+
+      const allCheckbox = document.getElementById("conf_all");
+      const itemCheckboxes = DOM.conferenceFilter.querySelectorAll(".conf-checkbox");
+
+      allCheckbox.addEventListener("change", (e) => {
+        itemCheckboxes.forEach(cb => cb.checked = e.target.checked);
+        refreshAllSlicersExcept("conference");
+        applyFilters();
+      });
+
+      itemCheckboxes.forEach(cb => {
+        cb.addEventListener("change", () => {
+          allCheckbox.checked = Array.from(itemCheckboxes).length > 0 && 
+                               Array.from(itemCheckboxes).every(item => item.checked);
+          refreshAllSlicersExcept("conference");
+          applyFilters();
+        });
+      });
+    }
+
+    // Evaluate all active control selections and trigger chart re-rendering
+    function applyFilters() {
+      const filtered = getFilteredDataExcept(null);
+
+      const primaryData = filtered.filter(d => !DIGITAL_NETWORKS.includes(d.TV_Network));
+      const digitalData = filtered.filter(d => DIGITAL_NETWORKS.includes(d.TV_Network));
+
+      renderChart('barChart', primaryData, false);
+      renderChart('digitalChart', digitalData, true);
+    }
+
+    // =========================================================================
+    // UTILITY HELPER FUNCTIONS
+    // =========================================================================
+
+    // Resolve the primary brand hex color for the home team by searching TEAM_COLORS for exact key matches
+    function getHomeTeamColor(matchup) {
+      if (!matchup) return '#D3D3D3';
+
+      // Split text string by " at " or " vs " / " vs. " (case-insensitive) to isolate the home team segment
+      const parts = matchup.split(/\s+(?:at|vs\.?)\s+/i);
+      if (parts.length < 2) return '#D3D3D3';
+
+      const homeTeamRaw = parts[parts.length - 1].trim();
+
+      // Direct exact lookup on the raw home team string
+      if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
+        return TEAM_COLORS[homeTeamRaw];
+      }
+
+      // Strip rank prefixes (e.g. "No. 5", "#12") and parenthetical strings (e.g. "(4-0)", "(OT)")
+      let homeTeamClean = homeTeamRaw
+        .replace(/^(?:No\.\s*\d+|#\d+)\s+/i, '')
+        .replace(/\s*\([^)]*\)/g, '')
+        .trim();
+
+      // Direct exact lookup on the cleaned home team name
+      if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamClean)) {
+        return TEAM_COLORS[homeTeamClean];
+      }
+
+      // Default fallback color (light gray) if no exact key matches are found in TEAM_COLORS
+      return '#D3D3D3';
+    }
+
+    // Convert standard AM/PM time strings into absolute minute integers from midnight
+    function timeToMinutes(t) {
+      if (!t) return 0;
+      const [time, ampm] = t.split(' ');
+      let [h, m] = time.split(':').map(Number);
+      if (ampm === 'PM' && h !== 12) h += 12;
+      if (ampm === 'AM' && h === 12) h = 0;
+      return h * 60 + m;
+    }
+
+    // Allocates overlapping games on the same network to stacked sub-rows
+    function resolveOverlapSubRows(games) {
+      games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
+
+      const subRowEndTimes = [];
+      const assignedGames = [];
+
+      games.forEach(game => {
+        const start = timeToMinutes(game.Start_Time);
+        const end = timeToMinutes(game.End_Time);
+        const effectiveEnd = end >= start ? end : end + 1440;
+
+        let rowIndex = -1;
+        for (let i = 0; i < subRowEndTimes.length; i++) {
+          if (subRowEndTimes[i] <= start) {
+            rowIndex = i;
+            break;
+          }
+        }
+
+        if (rowIndex === -1) {
+          subRowEndTimes.push(effectiveEnd);
+          rowIndex = subRowEndTimes.length - 1;
+        } else {
+          subRowEndTimes[rowIndex] = effectiveEnd;
+        }
+
+        assignedGames.push({
+          ...game,
+          subRowIndex: rowIndex
+        });
+      });
+
+      return { assignedGames, totalSubRows: subRowEndTimes.length };
+    }
+
+    // =========================================================================
+    // CHART RENDER ENGINE (Plotly.js)
+    // =========================================================================
+
+    function renderChart(targetId, data, isDigital = false) {
+      const container = document.getElementById(targetId);
+
+      // Empty / No Data Fallback
+      if (!data || data.length === 0) {
+        container.style.height = '120px';
+        Plotly.newPlot(targetId, [], {
+          paper_bgcolor: 'rgba(0,0,0,0)',
+          plot_bgcolor: 'rgba(0,0,0,0)',
+          title: {
+            text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
+            font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
+          },
+          xaxis: { visible: false },
+          yaxis: { visible: false },
+          showlegend: false
+        }, { responsive: true, displayModeBar: false });
+        return;
+      }
+
+      const grouped = d3.group(data, d => d.TV_Network);
+      const traces = [];
+      const yTicks = [];
+      const yTickLabels = [];
+
+      // Helper to bold ranked teams (e.g., "#19 Ohio State" or "#12 Minnesota State")
+      function formatMatchupText(text) {
+        if (!text) return '';
+        // Replaces "#12 Team Name" with "<b>#12 Team Name</b>"
+        return text.replace(/(#\d+\s+[\w\s.&'-]+?)(?=\s+at|\s+vs|$)/gi, '<b>$1</b>');
+      }
+
+      grouped.forEach((games, network) => {
+        const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
+
+        for (let i = 0; i < totalSubRows; i++) {
+          const rowKey = `${network}_row_${i}`;
+          yTicks.push(rowKey);
+          yTickLabels.push(network);
+        }
+
+        assignedGames.forEach(game => {
+          const start = timeToMinutes(game.Start_Time);
+          const end = timeToMinutes(game.End_Time);
+          const duration = end >= start ? (end - start) : (end + 1440 - start);
+          const teamHexColor = getHomeTeamColor(game.Matchup);
+          const internalRowKey = `${network}_row_${game.subRowIndex}`;
+          const formattedLabel = formatMatchupText(game.Matchup);
+
+          traces.push({
+            type: 'bar',
+            orientation: 'h',
+            y: [internalRowKey],
+            x: [duration],
+            base: [start],
+            name: game.Matchup,
+            marker: { 
+              color: teamHexColor,
+              line: { color: '#d4af37', width: 1.5 },
+              cornerradius: "45%"
+            },
+            text: [formattedLabel],
+            textposition: 'inside',
+            insidetextanchor: 'middle',
+            insidetextfont: { 
+              family: 'Segoe UI, Arial, sans-serif',
+              color: '#ffffff'
+            },
+
+            // Larger hoverover tooltips
+            hoverlabel: {
+              font: {
+                family: 'Segoe UI, Arial, sans-serif',
+                size: 18,
+                // color: '#ffffff'
+              },
+            bgcolor: teamHexColor,    // Dark background
+            // bordercolor: '#00d4ff'
+            },       
+
+            hovertemplate:
+              '<b>%{text}</b><br>' +
+              'Broadcast Outlet: ' + network + '<br>' +
+              'Puck Drop: %{customdata[0]}<extra></extra>',
+            customdata: [[game.Start_Time]]
+          });
+        });
+      });
+
+      // Strict Row Height Math
+      const ROW_HEIGHT = 30;
+      const TOP_AXIS_PADDING = 80;
+      const totalRows = yTicks.length;
+      
+      const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_AXIS_PADDING;
+
+      container.style.height = `${calculatedPlotHeight}px`;
+
+      const layout = {
+        height: calculatedPlotHeight,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        barmode: 'stack',
+        bargap: 0.15,                 
+        autosize: true,
+        margin: {
+          l: 100,
+          r: 20,
+          t: 60,
+          b: 10
+        },
+        dragmode: false,
+        xaxis: {
+          fixedrange: true,
+          side: 'top',
+          type: 'linear',
+          // range: [660, 1500],
+          range: [630, 1530],
+          tickmode: 'array',
+          tickvals: SHARED_X_AXIS_VALS,
+          ticktext: SHARED_X_AXIS_TEXT,
+          tickangle: -30,
+          tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
+          ticks: 'outside',
+          ticklen: 10,
+          tickcolor: 'rgba(0,0,0,0)',
+          showgrid: true,
+          gridcolor: 'rgba(212, 175, 55, 0.15)',
+          autorange: false,
+          automargin: false
+        },
+        yaxis: {
+          fixedrange: true,
+          ticksuffix: '   ',
+          autorange: 'reversed',
+          ticks: 'outside',
+          ticklen: 8,
+          tickcolor: 'rgba(0,0,0,0)',
+          tickmode: 'array',
+          tickvals: yTicks,
+          ticktext: yTickLabels,
+          tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' },
+          automargin: true
+        },
+        showlegend: false
+      };
+
+      const config = { responsive: true, displayModeBar: false };
+
+      Plotly.newPlot(targetId, traces, layout, config);
+    }
+
+    // Debounced window resize handler
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const plotlyContainers = document.querySelectorAll('.plotly-chart');
+        plotlyContainers.forEach(container => {
+          if (window.Plotly && container.clientHeight > 0) {
+            Plotly.Plots.resize(container);
+          }
+        });
+      }, 100);
+    });
+  </script>
+
+<!-- Copyright Footer -->
+  <footer class="footer-copyright">
+    &copy; Matthew Killeen
+  </footer>
+</body>
+
+</body>
+</html>

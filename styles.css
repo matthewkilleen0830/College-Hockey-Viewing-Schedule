@@ -1,0 +1,312 @@
+/* ==========================================================================
+   iceTheme1 - Frosted Ice Sheet & Glassmorphism Theme (Clean Header Version)
+   ========================================================================== */
+
+/* Global Reset & Deep Ice Sheet Page Background */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: 
+    radial-gradient(circle at 50% 10%, rgba(135, 206, 250, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 85% 85%, rgba(0, 191, 255, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #0b1d33 0%, #061121 50%, #020710 100%);
+  background-attachment: fixed;
+  color: #e8f7ff;
+  font-family: 'Arial Bold', 'Helvetica Neue Bold', Arial, Helvetica, sans-serif !important;
+  font-weight: 500 !important;
+  position: relative;
+}
+
+/* Global Viewport Corner Frost Web Effect (Positioned behind sticky header) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 10; /* Set below header banner */
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(180, 230, 255, 0.15) 20%, transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(180, 230, 255, 0.15) 20%, transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.3) 0%, rgba(180, 230, 255, 0.1) 25%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.35) 0%, rgba(180, 230, 255, 0.1) 25%, transparent 40%);
+  box-shadow: inset 0 0 90px rgba(160, 225, 255, 0.25);
+}
+
+/* Header Banner Positioning (Exempt from Frost Overlays) */
+.top-banner {
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 1rem;
+  /* padding-top: 0;
+  margin-top: 0; */
+  box-sizing: border-box;
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* High z-index ensures it sits above viewport frost */
+}
+
+.top-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px rgba(56, 182, 255, 0.25);
+}
+
+/* Flexbox Layout Enforcements */
+.main-wrapper {
+  min-height: 100vh;
+}
+
+.main-wrapper > .row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.main-wrapper > .row > .col-md-2 {
+  flex: 0 0 25vw !important;
+  max-width: 25vw !important;
+  width: 25vw !important;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.charts-column {
+  flex: 0 0 calc(100% - 25vw) !important;
+  max-width: calc(100% - 25vw) !important;
+  width: calc(100% - 25vw) !important;
+  min-width: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* Frosted Ice Sheet Containers (Glassmorphism + Frost Webs) */
+.filter-panel, 
+.chart-container {
+  position: relative;
+  border-radius: 14px;
+  background: rgba(13, 27, 46, 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(220, 245, 255, 0.45);
+  box-shadow: 
+    0 12px 35px rgba(0, 5, 15, 0.65),
+    inset 0 1px 3px rgba(255, 255, 255, 0.7),
+    inset 0 -2px 10px rgba(0, 180, 216, 0.25);
+  letter-spacing: -0.03em !important;
+  overflow: hidden;
+}
+
+/* Corner Frost Web Accumulation Overlay for Dashboard Panels */
+.filter-panel::after,
+.chart-container::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 30%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 25%),
+    radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 30%);
+  z-index: 1;
+}
+
+/* Sidebar Control Panel Sticky Settings */
+.filter-panel {
+  padding: 1.25rem;
+  padding-right: 0.75rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  height: fit-content;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .filter-panel, 
+  .col-md-2 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: clamp(2rem, 6vw, 6rem);
+    align-self: flex-start;
+    z-index: 100;
+  }
+}
+
+/* Bright Crystal Ice Typography */
+.filter-panel h1, .filter-panel h2, .filter-panel h3, .filter-panel h4, .filter-panel h5,
+.chart-container h1, .chart-container h2, .chart-container h3, .chart-container h4,
+.chart-container .chart-title {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #ffffff 0%, #b3edff 60%, #48cae4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  display: inline-block;
+  text-shadow: 0 0 12px rgba(0, 180, 216, 0.4);
+}
+
+/* Slicer Control Labels */
+.filter-panel label {
+  position: relative;
+  z-index: 2;
+  color: #e0f7fc;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Form Controls & Dropdowns */
+.filter-panel .form-control,
+.filter-panel .form-select {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(6, 16, 31, 0.75);
+  color: #ffffff;
+  border: 1.5px solid rgba(144, 224, 239, 0.5);
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.filter-panel .form-control:focus,
+.filter-panel .form-select:focus {
+  background-color: rgba(10, 25, 48, 0.9);
+  color: #ffffff;
+  border-color: #caf0f8;
+  box-shadow: 0 0 12px rgba(72, 202, 228, 0.8), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Frosted Checkbox Containers */
+.checkbox-panel {
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  background-color: rgba(3, 10, 20, 0.65);
+  border: 1.5px solid rgba(72, 202, 228, 0.4);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  color: #f0f8ff;
+  max-height: 150px;
+}
+
+.checkbox-panel .form-check {
+  margin-bottom: 0.3rem;
+}
+
+.checkbox-panel .form-check:last-child {
+  margin-bottom: 0;
+}
+
+.ranked-toggle-wrapper {
+  padding-left: 0.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Custom Ice Checkboxes */
+.form-check-input {
+  background-color: rgba(3, 10, 20, 0.8);
+  border: 1.5px solid #48cae4;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.form-check-input:checked {
+  background-color: #00b4d8;
+  border-color: #ffffff;
+  box-shadow: 0 0 10px rgba(72, 202, 228, 0.9);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3.5' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.form-check-input:focus {
+  border-color: #caf0f8;
+  outline: 0;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.7);
+}
+
+.form-check-label {
+  cursor: pointer;
+  color: #e0f7fc;
+}
+
+/* Custom Frosted Scrollbars */
+.filter-panel::-webkit-scrollbar,
+.checkbox-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-panel::-webkit-scrollbar-track,
+.checkbox-panel::-webkit-scrollbar-track {
+  background: rgba(2, 8, 16, 0.4);
+  border-radius: 3px;
+}
+
+.filter-panel::-webkit-scrollbar-thumb,
+.checkbox-panel::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffffff 0%, #48cae4 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(72, 202, 228, 0.6);
+}
+
+/* Chart Canvas Setup */
+.chart-container {
+  padding: 1rem 1rem 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  min-height: 200px;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.plotly-chart {
+  position: relative;
+  z-index: 2;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* SVG Chart Labels & Text Contrast */
+.chart-container text {
+  font-family: 'Segoe UI', Tahoma, sans-serif !important;
+  fill: #f0f9ff !important;
+}
+
+.chart-container .gtitle,
+.chart-container .g-title {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.footer-copyright {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-size: 0.5rem;
+  color: rgba(185, 234, 245, 0.4);
+  padding: 10px 0 5px 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  user-select: none;
+}
+
+.tiny-icon {
+  width: 48px;
+  height: 48px;
+}
