@@ -1,4 +1,5 @@
-# Road to the Frozen Four: Men's College Hockey Broadcast Dashboard (Women's Hockey site coming soon!)
+# Road to the Frozen Four: Men's College Hockey Broadcast Dashboard
+## (Women's College Hockey Broadcast Dashboard coming soon!)
 
 An interactive, single-page web dashboard designed to simplify your weekly college hockey viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of all broadcast and streaming game schedules with real-time dynamic filtering.
 
