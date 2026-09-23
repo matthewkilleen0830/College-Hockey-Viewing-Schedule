@@ -176,7 +176,7 @@
     // =========================================================================
 
     // List of networks classified as streaming
-    const DIGITAL_NETWORKS = ["ESPN+", "FloHockey.tv", "NCHC.tv", "B1G+", "CCHA TV", "Peacock", "YouTube", "Midco Sports Plus", "[No Livestream]", "USAHockeyTV.com", "TBA"]
+    const DIGITAL_NETWORKS = ["ESPN+", "FloHockey.tv", "NCHC.tv", "B1G+", "CCHA TV", "Peacock", "YouTube", "Midco Sports", "[NoLivestream]", "USAHockeyTV.com", "TBA"]
 
     // Preferred Conference Display Priority
     const PREFERRED_CONF_ORDER = [
@@ -190,9 +190,9 @@
     ];
 
     // Shared X-Axis Time Config (Minutes from Midnight) for Vertical Alignment Across Charts
-    const SHARED_X_AXIS_VALS = [660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
+    const SHARED_X_AXIS_VALS = [720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
     const SHARED_X_AXIS_TEXT = [
-      '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
+      '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
       '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
     ];
 
@@ -806,7 +806,7 @@
         bargap: 0.15,                 
         autosize: true,
         margin: {
-          l: 97,
+          l: 84,
           r: 20,
           t: 60,
           b: 10
@@ -817,7 +817,7 @@
           side: 'top',
           type: 'linear',
           // range: [660, 1500],
-          range: [660, 1470],
+          range: [690, 1470],
           tickmode: 'array',
           tickvals: SHARED_X_AXIS_VALS,
           ticktext: SHARED_X_AXIS_TEXT,
