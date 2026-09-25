@@ -1,4 +1,4 @@
-# Road to the Frozen Four: Men's College Hockey Broadcast Dashboard
+# Road to the Frozen Four: Men's and Women's College Hockey Broadcast Dashboard
 
 An interactive, single-page web dashboard designed to simplify your weekly college hockey viewing experience each week. Built with **HTML5, CSS3, JavaScript (ES6+), Bootstrap 5**, and **Plotly.js**, this dashboard provides a sleek, dark-mode visual grid of all broadcast and streaming game schedules with real-time dynamic filtering.
 
@@ -17,12 +17,12 @@ Check out the live interactive application hosted on GitHub Pages:
 
 * **Dual Schedule Visualizations**:
   * **National Broadcast Networks**: Visual timeline tracking major linear networks (e.g., Big Ten Network, ESPN2, ESPNU).
-  * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, FloHockey.tv, NCHC.tv, CCHA TV).
+  * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, FloHockey, NCHC.tv, Midco Sports Plus).
 * **Interactive Slicers & Adaptive Filters**:
   * **Day / Date Selection**: Instant focus on specific game days.
-  * **Top 20 Toggle**: One-click filter to highlight USCHO Top 20 ranked matchups.
+  * **Top 20 Toggle**: One-click filter to highlight USCHO ranked matchups.
   * **Kickoff Time Slicer**: Dynamic multi-select filter adapting to available puck drop slots for selected days.
-  * **Conference Slicer**: Multi-select conference filter (Big Ten, CCHA, NCHC, etc.) that dynamically updates based on active date, time, and ranking constraints.
+  * **Conference Slicer**: Multi-select conference filter (Big Ten, WCHA, NCHC, etc.) that dynamically updates based on active date, time, and ranking constraints.
 * **Art Deco Dark Theme**:
   * Clean, polished, custom CSS UI tailored for ice mode.
   * Custom team color branding and high-contrast timeline bars for seamless visual scanning.
