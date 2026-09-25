@@ -192,8 +192,8 @@
     // =========================================================================
 
     // List of networks classified as streaming
-    const DIGITAL_NETWORKS = ["ESPN+", "FloHockey.tv", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
-    "YouTube", "Midco Sports", "USAHockeyTV.com", "[NoLivestream]", "TBA", "FloCollege", "hudl"];
+    const DIGITAL_NETWORKS = ["ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
+    "YouTube", "Midco Sports", "USAHockeyTV.com", "[NoLivestream]", "TBA", "hudl", "NEC Front Row"];
 
     // Preferred Conference Display Priority
     const PREFERRED_CONF_ORDER = [
@@ -213,9 +213,9 @@
     //   '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
     // ];
 
-    const SHARED_X_AXIS_VALS = [720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
+    const SHARED_X_AXIS_VALS = [600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
     const SHARED_X_AXIS_TEXT = [
-      '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
+      '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
       '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
     ];
 
@@ -301,7 +301,10 @@
 
     "Syracuse": "#F76900",
     "Franklin Pierce": "#A91938",
-    "Assumption": "#004B87"
+    "Assumption": "#004B87",
+    "Mercyhurst": "#00594E",
+    "St. Michael's": "#55318C",
+    "Delaware": "#00539F" 
 
     };
 
@@ -863,7 +866,7 @@ function renderChart(targetId, data, isDigital = false) {
       fixedrange: true,
       side: 'top',
       type: 'linear',
-      range: [690, 1470],
+      range: [600, 1470],
       tickmode: 'array',
       tickvals: SHARED_X_AXIS_VALS,
       ticktext: SHARED_X_AXIS_TEXT,
