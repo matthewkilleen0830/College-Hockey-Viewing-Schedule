@@ -14,7 +14,7 @@
 
 <title>College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four</title>
 
-<meta name="description" content="Find this week's college hockey TV schedule and viewing guide. See face-off times, ranked matchups, broadcast networks, streaming games, USCHO Top 20 teams, and conference schedules in one interactive dashboard.">
+<meta name="description" content="Find this week's college hockey TV schedule and viewing guide. See face-off times, ranked matchups, broadcast networks, streaming games, USCHO ranked teams, and conference schedules in one interactive dashboard.">
 <meta name="author" content="Matthew Killeen">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
@@ -25,7 +25,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
-<meta property="og:description" content="Interactive college hockey viewing guide with puck drop times, TV networks, streaming services, ranked matchups, USCHO Top 20 teams, and conference filters.">
+<meta property="og:description" content="Interactive college hockey viewing guide with puck drop times, TV networks, streaming services, ranked matchups, USCHO ranked teams, and conference filters.">
 <meta property="og:url" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
 <meta property="og:site_name" content="Road to the Frozen Four">
 <meta property="og:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/college-hockey-viewing-guide.jpg">
@@ -37,7 +37,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
-<meta name="twitter:description" content="Interactive weekly college hockey TV and streaming schedule with puck drop times, ranked matchups, USCHO Top 20 teams, networks, and conference filters.">
+<meta name="twitter:description" content="Interactive weekly college hockey TV and streaming schedule with puck drop times, ranked matchups, USCHO ranked teams, networks, and conference filters.">
 <meta name="twitter:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/college-hockey-viewing-guide.jpg">
 <meta name="twitter:image:alt" content="College hockey TV schedule and viewing guide dashboard">
 
@@ -61,10 +61,11 @@
     "College Hockey TV Schedule",
     "College Hockey Viewing Schedule",
     "College Hockey TV Guide",
-    "Men's Hockey Viewing Guide"
+    "Men's College Hockey Viewing Guide",
+    "Women's College Hockey Viewing Guide"
   ],
   "url": "https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/",
-  "description": "Interactive weekly college hockey TV and streaming viewing guide showing puck drop times, broadcast networks, streaming providers, ranked matchups, USCHO Top 20 teams, and conference schedules.",
+  "description": "Interactive weekly college hockey TV and streaming viewing guide showing puck drop times, broadcast networks, streaming providers, ranked matchups, USCHO ranked teams, and conference schedules.",
   "applicationCategory": "SportsApplication",
   "operatingSystem": "Web",
   "browserRequirements": "Requires JavaScript",
@@ -116,21 +117,19 @@
             <select id="dateFilter" class="form-select"></select>
           </div>
 
-          <!-- Gender / Division Filter -->
-<!-- <div class="filter-group mb-3"> -->
-<div class="mb-3 checkbox-panel">
-  <!-- <label class="filter-label fw-bold mb-2">Gender</label> -->
-  <div class="slicer-container p-0 rounded">
-    <div class="form-check">
-      <input class="form-check-input gender-filter" type="checkbox" value="M" id="gender-m" checked>
-      <label class="form-check-label" for="gender-m">Men's</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input gender-filter" type="checkbox" value="W" id="gender-w" checked>
-      <label class="form-check-label" for="gender-w">Women's</label>
-    </div>
-  </div>
-</div>
+          <!-- Gender Filter -->
+          <div class="mb-3 checkbox-panel">
+            <div class="slicer-container p-0 rounded">
+              <div class="form-check">
+                <input class="form-check-input gender-filter" type="checkbox" value="M" id="gender-m" checked>
+                <label class="form-check-label" for="gender-m">Men's</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input gender-filter" type="checkbox" value="W" id="gender-w" checked>
+                <label class="form-check-label" for="gender-w">Women's</label>
+              </div>
+            </div>
+          </div>
 
           <!-- Ranked Teams Toggle Checkbox -->
           <div class="mb-3 ranked-toggle-wrapper">
@@ -831,10 +830,14 @@ function renderChart(targetId, data, isDigital = false) {
         },       
 
         hovertemplate:
-          '<b>%{text}</b><br>' +
-          'Broadcast Outlet: ' + network + '<br>' +
-          'Puck Drop: %{customdata[0]}<extra></extra>',
-        customdata: [[game.Start_Time]]
+        '<b>%{text}</b><br>' +
+        'Division: %{customdata[1]}<br>' +
+        'Broadcast Outlet: ' + network + '<br>' +
+        'Puck Drop: %{customdata[0]}<extra></extra>',
+        customdata: [[
+          game.Start_Time, 
+          game.Gender === 'W' || game.Gender === 'F' ? "Women's" : "Men's"
+        ]]
       });
     });
   });
