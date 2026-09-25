@@ -3,25 +3,25 @@
 "Thu, Sep 24",Thursday,#2 Ohio State at #4 Penn State,B1G+,5:00 PM,7:30 PM,Y,W,WCHA,AHA
 "Fri, Sep 25",Friday,RPI at #14 Minnesota State,B1G+,11:00 AM,1:30 PM,Y,W,ECAC,WCHA
 "Fri, Sep 25",Friday,Lindenwood at Merrimack,ESPN+,1:00 PM,3:30 PM,N,W,AHA,Hockey East
-"Fri, Sep 25",Friday,Union at Franklin Pierce,FloCollege,1:00 PM,3:30 PM,N,W,ECAC,NEWHA
+"Fri, Sep 25",Friday,Union at Franklin Pierce,FloHockey,1:00 PM,3:30 PM,N,W,ECAC,NEWHA
 "Fri, Sep 25",Friday,New Hampshire at St. Thomas,B1G+,2:00 PM,4:30 PM,N,W,Hockey East,WCHA
 "Fri, Sep 25",Friday,St. Michael's at Assumption,hudl,2:50 PM,5:20 PM,N,W,NEWHA,NEWHA
 "Fri, Sep 25",Friday,#2 Ohio State at #4 Penn State,B1G+,3:00 PM,5:30 PM,Y,W,WCHA,AHA
-"Fri, Sep 25",Friday,Stonehill at Syracuse,FloHockey.tv,5:00 PM,7:30 PM,N,W,NEWHA,AHA
+"Fri, Sep 25",Friday,Stonehill at Syracuse,FloHockey,5:00 PM,7:30 PM,N,W,NEWHA,AHA
 "Fri, Sep 25",Friday,RIT at #12 Clarkson,ESPN+,5:00 PM,7:30 PM,Y,W,AHA,ECAC
 "Fri, Sep 25",Friday,#1 Wisconsin at St. Lawrence,ESPN+,5:00 PM,7:30 PM,Y,W,WCHA,ECAC
 "Fri, Sep 25",Friday,Delaware at Holy Cross,ESPN+,5:00 PM,7:30 PM,N,W,AHA,Hockey East
 "Fri, Sep 25",Friday,#6 Quinnipiac at Maine,ESPN+,5:00 PM,7:30 PM,Y,W,ECAC,Hockey East
 "Fri, Sep 25",Friday,Providence at Sacred Heart,ESPN+,5:00 PM,7:30 PM,N,W,Hockey East,NEWHA
-"Fri, Sep 25",Friday,Post at Robert Morris,FloHockey.tv,6:00 PM,8:30 PM,N,W,NEWHA,AHA
+"Fri, Sep 25",Friday,Post at Robert Morris,FloHockey,6:00 PM,8:30 PM,N,W,NEWHA,AHA
 "Fri, Sep 25",Friday,#15 Mercyhurst at #9 Minnesota Duluth,B1G+,6:00 PM,8:30 PM,Y,W,AHA,WCHA
 "Fri, Sep 25",Friday,#7 UConn at St. Cloud State,B1G+,7:00 PM,9:30 PM,Y,W,Hockey East,WCHA
 "Sat, Sep 26",Saturday,St. Michael's at Assumption,hudl,12:30 PM,3:00 PM,N,W,NEWHA,NEWHA
 "Sat, Sep 26",Saturday,Delaware at Holy Cross,ESPN+,1:00 PM,3:30 PM,N,W,AHA,Hockey East
-"Sat, Sep 26",Saturday,Union at Franklin Pierce,FloCollege,1:00 PM,3:30 PM,N,W,ECAC,NEWHA
+"Sat, Sep 26",Saturday,Union at Franklin Pierce,FloHockey,1:00 PM,3:30 PM,N,W,ECAC,NEWHA
 "Sat, Sep 26",Saturday,New Hampshire at St. Thomas,B1G+,1:00 PM,3:30 PM,N,W,Hockey East,WCHA
-"Sat, Sep 26",Saturday,Stonehill at Syracuse,FloHockey.tv,2:00 PM,4:30 PM,N,W,NEWHA,AHA
-"Sat, Sep 26",Saturday,Post at Robert Morris,FloHockey.tv,2:00 PM,4:30 PM,N,W,NEWHA,AHA
+"Sat, Sep 26",Saturday,Stonehill at Syracuse,FloHockey,2:00 PM,4:30 PM,N,W,NEWHA,AHA
+"Sat, Sep 26",Saturday,Post at Robert Morris,FloHockey,2:00 PM,4:30 PM,N,W,NEWHA,AHA
 "Sat, Sep 26",Saturday,RIT at #12 Clarkson,ESPN+,2:00 PM,4:30 PM,Y,W,AHA,ECAC
 "Sat, Sep 26",Saturday,#1 Wisconsin at St. Lawrence,ESPN+,2:00 PM,4:30 PM,Y,W,WCHA,ECAC
 "Sat, Sep 26",Saturday,#6 Quinnipiac at Maine,ESPN+,2:00 PM,4:30 PM,Y,W,ECAC,Hockey East
@@ -30,6 +30,24 @@
 "Sat, Sep 26",Saturday,#7 UConn at St. Cloud State,B1G+,2:00 PM,4:30 PM,Y,W,Hockey East,WCHA
 "Sat, Sep 26",Saturday,#15 Mercyhurst at #9 Minnesota Duluth,B1G+,3:00 PM,5:30 PM,Y,W,AHA,WCHA
 "Sat, Sep 26",Saturday,LIU at Boston University,ESPN+,3:00 PM,5:30 PM,N,W,NEWHA,Hockey East
+"Thu, Oct 01",Thursday,St. Lawrence at Maine,ESPN+,5:00 PM,7:30 PM,N,W,ECAC,Hockey East
+"Thu, Oct 01",Thursday,Assumption at Holy Cross,ESPN+,6:00 PM,8:30 PM,N,W,NEWHA,Hockey East
+"Thu, Oct 01",Thursday,Boston University at #1 Wisconsin,B1G+,7:00 PM,9:30 PM,Y,W,Hockey East,WCHA
+"Fri, Oct 02",Friday,Syracuse at #15 Mercyhurst,FloHockey,5:00 PM,7:30 PM,Y,W,AHA,AHA
+"Fri, Oct 02",Friday,Robert Morris at #4 Penn State,B1G+,5:00 PM,7:30 PM,Y,W,AHA,AHA
+"Fri, Oct 02",Friday,St. Lawrence at Maine,ESPN+,1:00 PM,3:30 PM,N,W,ECAC,Hockey East
+"Fri, Oct 02",Friday,Providence at #6 Quinnipiac,ESPN+,2:00 PM,4:30 PM,Y,W,Hockey East,ECAC
+"Fri, Oct 02",Friday,New Hampshire at LIU,FloHockey,2:00 PM,4:30 PM,N,W,Hockey East,NEWHA
+"Fri, Oct 02",Friday,Union at Merrimack,ESPN+,3:00 PM,5:30 PM,N,W,ECAC,Hockey East
+"Fri, Oct 02",Friday,#13 Colgate at RIT,[NoLivestream],5:00 PM,7:30 PM,Y,W,ECAC,AHA
+"Fri, Oct 02",Friday,#5 Northeastern at RPI,ESPN+,5:00 PM,7:30 PM,Y,W,Hockey East,ECAC
+"Fri, Oct 02",Friday,#12 Clarkson at #7 UConn,ESPN+,5:00 PM,7:30 PM,Y,W,ECAC,Hockey East
+"Fri, Oct 02",Friday,Boston University at #1 Wisconsin,B1G+,5:00 PM,7:30 PM,Y,W,Hockey East,WCHA
+"Fri, Oct 02",Friday,#9 Minnesota Duluth at Vermont,ESPN+,10:00 AM,12:30 PM,Y,W,WCHA,Hockey East
+"Fri, Oct 02",Friday,Franklin Pierce at St. Michael's,FloHockey,6:00 PM,8:30 PM,N,W,NEWHA,NEWHA
+"Fri, Oct 02",Friday,St. Cloud State at #14 Minnesota State,B1G+,6:00 PM,8:30 PM,Y,W,WCHA,WCHA
+"Fri, Oct 02",Friday,#3 Minnesota at Bemidji State,B1G+,6:00 PM,8:30 PM,Y,W,WCHA,WCHA
+"Fri, Oct 02",Friday,#2 Ohio State at St. Thomas,B1G+,6:00 PM,8:30 PM,Y,W,WCHA,WCHA
 "Fri, Oct 02",Friday,Manitoba at #18 Minnesota State,Midco Sports,11:00 AM,2:00 PM,Y,M,,CCHA
 "Fri, Oct 02",Friday,#12 Boston College at #3 Michigan State,B1G+,4:00 PM,6:30 PM,Y,M,Hockey East,Big Ten
 "Fri, Oct 02",Friday,RPI at Army,ESPN+,5:00 PM,7:30 PM,N,M,ECAC,AHA
@@ -37,24 +55,24 @@
 "Fri, Oct 02",Friday,Maryville at St. Lawrence,ESPN+,5:00 PM,7:30 PM,N,M,Independents,ECAC
 "Fri, Oct 02",Friday,Miami (Ohio) at Northern Michigan,Midco Sports,5:37 PM,8:37 PM,N,M,NCHC,CCHA
 "Fri, Oct 02",Friday,Bowling Green at #2 Michigan,B1G+,6:00 PM,8:30 PM,Y,M,CCHA,Big Ten
-"Fri, Oct 02",Friday,RIT at Niagara,[NoLivestream],6:00 PM,8:30 PM,N,M,AHA,AHA
+"Fri, Oct 02",Friday,RIT at Niagara,FloHockey,6:00 PM,8:30 PM,N,M,AHA,AHA
 "Fri, Oct 02",Friday,Maine at Holy Cross,ESPN+,6:00 PM,8:30 PM,N,M,Hockey East,AHA
 "Fri, Oct 02",Friday,New Hampshire at #7 Quinnipiac,ESPN+,6:00 PM,8:30 PM,Y,M,Hockey East,ECAC
 "Fri, Oct 02",Friday,Stonehill at #9 Providence,ESPN+,6:00 PM,8:30 PM,Y,M,Independents,Hockey East
-"Fri, Oct 02",Friday,Ferris State at Canisius,[NoLivestream],6:07 PM,8:37 PM,N,M,CCHA,AHA
+"Fri, Oct 02",Friday,Ferris State at Canisius,FloHockey,6:07 PM,8:37 PM,N,M,CCHA,AHA
 "Fri, Oct 02",Friday,#14 Minnesota at #19 Michigan Tech,Midco Sports,6:07 PM,8:37 PM,Y,M,Big Ten,CCHA
 "Fri, Oct 02",Friday,Arizona State at Lindenwood,[NoLivestream],7:00 PM,9:30 PM,N,M,NCHC,Independents
 "Fri, Oct 02",Friday,LIU at #5 Minnesota Duluth,NCHC.tv,7:07 PM,9:37 PM,Y,M,Independents,NCHC
 "Fri, Oct 02",Friday,Robert Morris at #6 Wisconsin,B1G+,8:00 PM,10:30 PM,Y,M,AHA,Big Ten
 "Fri, Oct 02",Friday,#10 UMass at Colorado College,NCHC.tv,8:00 PM,10:30 PM,Y,M,Hockey East,NCHC
 "Fri, Oct 02",Friday,#1 Denver at Alaska-Anchorage,YouTube,10:00 PM,12:30 AM,Y,M,NCHC,Independents
-"Fri, Oct 02",Friday,#16 Boston University at Alaska,FloHockey.tv,10:07 PM,12:37 AM,Y,M,Hockey East,Independents
+"Fri, Oct 02",Friday,#16 Boston University at Alaska,FloHockey,10:07 PM,12:37 AM,Y,M,Hockey East,Independents
 "Sat, Oct 03",Saturday,#20 Merrimack at #7 Quinnipiac,ESPN+,3:00 PM,5:30 PM,Y,M,Hockey East,ECAC
 "Sat, Oct 03",Saturday,Union at Army,[NoLivestream],3:00 PM,5:30 PM,N,M,ECAC,AHA
 "Sat, Oct 03",Saturday,Ottawa at Clarkson,ESPN+,3:00 PM,5:30 PM,N,M,,ECAC
 "Sat, Oct 03",Saturday,Maryville at St. Lawrence,ESPN+,4:00 PM,6:30 PM,N,M,Independents,ECAC
-"Sat, Oct 03",Saturday,Niagara at RIT,[NoLivestream],4:05 PM,6:35 PM,N,M,AHA,AHA
-"Sat, Oct 03",Saturday,Ferris State at Canisius,[NoLivestream],4:07 PM,6:37 PM,N,M,CCHA,AHA
+"Sat, Oct 03",Saturday,Niagara at RIT,FloHockey,4:05 PM,6:35 PM,N,M,AHA,AHA
+"Sat, Oct 03",Saturday,Ferris State at Canisius,FloHockey,4:07 PM,6:37 PM,N,M,CCHA,AHA
 "Sat, Oct 03",Saturday,Arizona State at Lindenwood,[NoLivestream],5:00 PM,7:30 PM,N,M,NCHC,Independents
 "Sat, Oct 03",Saturday,Western Ontario at #8 Western Michigan,NCHC.tv,5:00 PM,7:30 PM,Y,M,,NCHC
 "Sat, Oct 03",Saturday,#12 Boston College at US NTDP,USAHockeyTV.com,5:00 PM,7:30 PM,Y,M,Hockey East,
@@ -69,5 +87,20 @@
 "Sat, Oct 03",Saturday,Robert Morris at #6 Wisconsin,B1G+,7:00 PM,9:30 PM,Y,M,AHA,Big Ten
 "Sat, Oct 03",Saturday,#10 UMass at Colorado College,NCHC.tv,7:00 PM,9:30 PM,Y,M,Hockey East,NCHC
 "Sat, Oct 03",Saturday,#1 Denver at Alaska-Anchorage,YouTube,8:00 PM,10:30 PM,Y,M,NCHC,Independents
-"Sat, Oct 03",Saturday,#16 Boston University at Alaska,FloHockey.tv,10:07 PM,12:37 AM,Y,M,Hockey East,Independents
+"Sat, Oct 03",Saturday,#16 Boston University at Alaska,FloHockey,10:07 PM,12:37 AM,Y,M,Hockey East,Independents
+"Sat, Oct 03",Saturday,Syracuse at #15 Mercyhurst,FloHockey,1:00 PM,3:30 PM,Y,W,AHA,AHA
+"Sat, Oct 03",Saturday,Lindenwood at Delaware,FloHockey,1:00 PM,3:30 PM,N,W,AHA,AHA
+"Sat, Oct 03",Saturday,Robert Morris at #4 Penn State,B1G+,1:00 PM,3:30 PM,Y,W,AHA,AHA
+"Sat, Oct 03",Saturday,Providence at #6 Quinnipiac,ESPN+,2:00 PM,4:30 PM,Y,W,Hockey East,ECAC
+"Sat, Oct 03",Saturday,New Hampshire at LIU,FloHockey,1:00 PM,3:30 PM,N,W,Hockey East,NEWHA
+"Sat, Oct 03",Saturday,Union at Merrimack,ESPN+,1:00 PM,3:30 PM,N,W,ECAC,Hockey East
+"Sat, Oct 03",Saturday,RIT at #13 Colgate,ESPN+,5:00 PM,7:30 PM,Y,W,AHA,ECAC
+"Sat, Oct 03",Saturday,#12 Clarkson at #7 UConn,ESPN+,2:00 PM,4:30 PM,Y,W,ECAC,Hockey East
+"Sat, Oct 03",Saturday,Boston College at Stonehill,NEC Front Row,6:00 PM,8:30 PM,N,W,Hockey East,NEWHA
+"Sat, Oct 03",Saturday,#9 Minnesota Duluth at Vermont,ESPN+,12:00 PM,2:30 PM,Y,W,WCHA,Hockey East
+"Sat, Oct 03",Saturday,Franklin Pierce at St. Michael's,FloHockey,2:00 PM,4:30 PM,N,W,NEWHA,NEWHA
+"Sat, Oct 03",Saturday,St. Cloud State at #14 Minnesota State,B1G+,3:00 PM,5:30 PM,Y,W,WCHA,WCHA
+"Sat, Oct 03",Saturday,#3 Minnesota at Bemidji State,B1G+,2:00 PM,4:30 PM,Y,W,WCHA,WCHA
+"Sat, Oct 03",Saturday,#2 Ohio State at St. Thomas,B1G+,2:00 PM,4:30 PM,Y,W,WCHA,WCHA
 "Sun, Oct 04",Sunday,Manitoba at #4 North Dakota,NCHC.tv,3:07 PM,5:37 PM,Y,M,,NCHC
+"Sun, Oct 04",Sunday,Lindenwood at Delaware,FloHockey,11:00 AM,1:30 PM,N,W,AHA,AHA
