@@ -20,7 +20,7 @@ Check out the live interactive application hosted on GitHub Pages:
   * **Streaming Providers**: Dedicated schedule tracking for digital-only streams (e.g., ESPN+, Peacock, FloHockey, NCHC.tv, Midco Sports Plus).
 * **Interactive Slicers & Adaptive Filters**:
   * **Day / Date Selection**: Instant focus on specific game days.
-  * **Top 20 Toggle**: One-click filter to highlight USCHO ranked matchups.
+  * **USCHO Ranked Teams Toggle**: One-click filter to highlight USCHO ranked matchups.
   * **Kickoff Time Slicer**: Dynamic multi-select filter adapting to available puck drop slots for selected days.
   * **Conference Slicer**: Multi-select conference filter (Big Ten, WCHA, NCHC, etc.) that dynamically updates based on active date, time, and ranking constraints.
 * **Art Deco Dark Theme**:
@@ -51,13 +51,13 @@ Check out the live interactive application hosted on GitHub Pages:
 ## 📁 Repository Structure
 
 ```text
-├── index.html          # Main HTML entry point with layout & SEO metadata
-├── styles.css          # Custom Art Deco dark-theme styling & responsive rules
-├── script.js           # Dynamic data fetching, filter logic, and Plotly chart rendering
-├── currentWeek/        # Active schedule data directory
-│   └── XX_weekFull.csv # Weekly matchup dataset
-├── images/             # Visual asset directory
-│   ├── favicon.png     # Browser favicon icon
-│   ├── headerBanner.png# Dashboard header banner & Open Graph preview image
-│   └── icon.png        # Web app icon
-└── README.md           # Project documentation
+├── index.html            # Main HTML entry point with layout & SEO metadata
+├── styles.css            # Custom Art Deco dark-theme styling & responsive rules
+├── script.js             # Dynamic data fetching, filter logic, and Plotly chart rendering
+├── currentWeek/          # Active schedule data directory
+│   └── weekFull.csv      # Weekly matchup dataset
+├── images/               # Visual asset directory
+│   ├── favicon.png       # Browser favicon icon
+│   ├── headerBanner.png  # Dashboard header banner & Open Graph preview image
+│   └── icon.png          # Web app icon
+└── README.md             # Project documentation
