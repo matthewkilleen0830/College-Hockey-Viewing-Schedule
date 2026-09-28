@@ -1,4 +1,4 @@
-﻿Date,Day_of_Week,Matchup,TV_Network,Start_Time,End_Time,Top_25,Gender,Visitor_Conference,Home_Conference
+﻿Date,Day_of_Week,Matchup,TV_Network,Start_Time,End_Time,Ranked,Gender,Visitor_Conference,Home_Conference
 "Thu, Oct 01",Thursday,St. Lawrence at Maine,ESPN+,5:00 PM,7:30 PM,N,W,ECAC,Hockey East
 "Thu, Oct 01",Thursday,Assumption at Holy Cross,ESPN+,6:00 PM,8:30 PM,N,W,NEWHA,Hockey East
 "Thu, Oct 01",Thursday,Boston University at #1 Wisconsin,B1G+,7:00 PM,9:30 PM,Y,W,Hockey East,WCHA
@@ -13,7 +13,7 @@
 "Fri, Oct 02",Friday,#9 Clarkson at #12 UConn,ESPN+,5:00 PM,7:30 PM,Y,W,ECAC,Hockey East
 "Fri, Oct 02",Friday,Boston University at #1 Wisconsin,B1G+,5:00 PM,7:30 PM,Y,W,Hockey East,WCHA
 "Fri, Oct 02",Friday,#7 Minnesota Duluth at Vermont,ESPN+,10:00 AM,12:30 PM,Y,W,WCHA,Hockey East
-"Fri, Oct 02",Friday,Franklin Pierce at St. Michael's,FloHockey,6:00 PM,8:30 PM,N,W,NEWHA,NEWHA
+"Fri, Oct 02",Friday,Franklin Pierce at Saint Michael's,FloHockey,6:00 PM,8:30 PM,N,W,NEWHA,NEWHA
 "Fri, Oct 02",Friday,#13 St. Cloud State at #15 Minnesota State,B1G+,6:00 PM,8:30 PM,Y,W,WCHA,WCHA
 "Fri, Oct 02",Friday,#3 Minnesota at Bemidji State,B1G+,6:00 PM,8:30 PM,Y,W,WCHA,WCHA
 "Fri, Oct 02",Friday,#2 Ohio State at St. Thomas,B1G+,6:00 PM,8:30 PM,Y,W,WCHA,WCHA
@@ -67,7 +67,7 @@
 "Sat, Oct 03",Saturday,#9 Clarkson at #12 UConn,ESPN+,2:00 PM,4:30 PM,Y,W,ECAC,Hockey East
 "Sat, Oct 03",Saturday,Boston College at Stonehill,NEC Front Row,6:00 PM,8:30 PM,N,W,Hockey East,NEWHA
 "Sat, Oct 03",Saturday,#7 Minnesota Duluth at Vermont,ESPN+,12:00 PM,2:30 PM,Y,W,WCHA,Hockey East
-"Sat, Oct 03",Saturday,Franklin Pierce at St. Michael's,FloHockey,2:00 PM,4:30 PM,N,W,NEWHA,NEWHA
+"Sat, Oct 03",Saturday,Franklin Pierce at Saint Michael's,FloHockey,2:00 PM,4:30 PM,N,W,NEWHA,NEWHA
 "Sat, Oct 03",Saturday,#13 St. Cloud State at #15 Minnesota State,B1G+,3:00 PM,5:30 PM,Y,W,WCHA,WCHA
 "Sat, Oct 03",Saturday,#3 Minnesota at Bemidji State,B1G+,2:00 PM,4:30 PM,Y,W,WCHA,WCHA
 "Sat, Oct 03",Saturday,#2 Ohio State at St. Thomas,B1G+,2:00 PM,4:30 PM,Y,W,WCHA,WCHA
