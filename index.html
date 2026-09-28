@@ -163,13 +163,13 @@
         
         <!-- Traditional Networks Chart Container -->
         <div class="chart-container top-chart" id="networkChartContainer">
-          <h6 class="mb-2 chart-title">Linear Broadcast Networks <i style="font-size: 0.7em;">(all times Central Time)</i></h6>
+          <h6 class="mb-2 chart-title">Linear Broadcast Networks <i>(all times Central Time)</i></h6>
           <div id="barChart" class="plotly-chart"></div>
         </div>
 
         <!-- Streaming Networks Chart Container -->
         <div class="chart-container bottom-chart" id="digitalChartContainer">
-          <h6 class="mb-2 chart-title">Digital Streaming Platforms <i style="font-size: 0.7em;">(all times Central Time)</i></h6>
+          <h6 class="mb-2 chart-title">Digital Streaming Platforms <i>(all times Central Time)</i></h6>
           <div id="digitalChart" class="plotly-chart"></div>
         </div>
 
@@ -307,7 +307,7 @@
 
     };
 
-    // Cached DOM Reference Element map for performance optimization
+// Cached DOM Reference Element map for performance optimization
 const DOM = {
   dateFilter: document.getElementById("dateFilter"),
   timeFilter: document.getElementById("timeFilter"),
@@ -333,26 +333,26 @@ d3.csv("currentWeek/weekFull.csv", raw => {
   const initialDate = getFirstAvailableDate(window.gameData);
   updateDateSlicerOptions(window.gameData, initialDate);
   
-  refreshAllSlicersExcept();
+  refreshAllSlicersExcept(null, true);
   applyFilters();
 
   // Primary Date Slicer Event Listener
   DOM.dateFilter.addEventListener("change", () => {
-    refreshAllSlicersExcept("date");
+    refreshAllSlicersExcept("date", true);
     applyFilters();
   });
 
   // Attach event listeners to Gender checkboxes
   document.querySelectorAll('.gender-filter').forEach(checkbox => {
     checkbox.addEventListener('change', () => {
-      refreshAllSlicersExcept("gender");
+      refreshAllSlicersExcept("gender", false);
       applyFilters();
     });
   });
 
   // Ranked Slicer Event Listener
   DOM.rankedFilter.addEventListener("change", () => {
-    refreshAllSlicersExcept("ranked");
+    refreshAllSlicersExcept("ranked", false);
     applyFilters();
   });
 });
@@ -366,8 +366,9 @@ function getActiveSelections() {
   const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
   const isRankedOnly = DOM.rankedFilter ? DOM.rankedFilter.checked : false;
 
+  // Only consider enabled & checked gender options
   const selectedGenders = Array.from(
-    document.querySelectorAll('.gender-filter:checked')
+    document.querySelectorAll('.gender-filter:checked:not(:disabled)')
   ).map(cb => cb.value);
 
   const timeAllChecked = document.getElementById("time_all")?.checked ?? true;
@@ -403,19 +404,23 @@ function getFilteredDataExcept(excludedFilter = null) {
 
     // Gender filter (M/W)
     if (excludedFilter !== "gender") {
-      // If no gender checkboxes are selected, return no games
       if (state.genders.length === 0) return false;
       
       const gameGender = d.Gender ? d.Gender.trim() : "";
-      if (!state.genders.includes(gameGender)) return false;
+      const matchesGender = state.genders.some(selected => {
+        return selected === gameGender ||
+               (selected === "Men's" && gameGender === "M") ||
+               (selected === "Women's" && gameGender === "W") ||
+               (selected === "M" && gameGender === "Men's") ||
+               (selected === "W" && gameGender === "Women's");
+      });
+
+      if (!matchesGender) return false;
     }
 
     // Puck Drop Time filter
     if (excludedFilter !== "time") {
-      // If 'All Times' is unchecked and no individual time boxes are checked -> return no games
       if (!state.isTimeAll && state.times.length === 0) return false;
-
-      // If specific times are selected, ensure game matches one of them
       if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
     }
 
@@ -426,10 +431,8 @@ function getFilteredDataExcept(excludedFilter = null) {
 
     // Conference filter
     if (excludedFilter !== "conference") {
-      // If 'All Conferences' is unchecked and no individual conference boxes are checked -> return no games
       if (!state.isConfAll && state.conferences.length === 0) return false;
 
-      // If specific conferences are selected, ensure game matches
       if (!state.isConfAll) {
         const vConf = d.Visitor_Conference?.trim();
         const hConf = d.Home_Conference?.trim();
@@ -442,65 +445,111 @@ function getFilteredDataExcept(excludedFilter = null) {
 }
 
 // Re-computes available options for all slicers while preserving user selections where applicable
-function refreshAllSlicersExcept(targetSource = null) {
+function refreshAllSlicersExcept(targetSource = null, isDateChange = false) {
   const currentState = getActiveSelections();
 
-  // 1. Refresh Time options based on all filters EXCEPT Time
+  // 1. Refresh Gender options based on all filters EXCEPT Gender
+  if (targetSource !== "gender") {
+    const genderSubset = getFilteredDataExcept("gender");
+    updateGenderSlicer(genderSubset, isDateChange || targetSource === "date");
+  }
+
+  // 2. Refresh Time options based on all filters EXCEPT Time
   if (targetSource !== "time") {
     const timeSubset = getFilteredDataExcept("time");
     updateTimeSlicer(timeSubset, currentState.times, currentState.isTimeAll);
   }
 
-  // 2. Refresh Ranked checkbox toggle availability based on all filters EXCEPT Ranked
+  // 3. Refresh Ranked checkbox toggle availability based on all filters EXCEPT Ranked
   if (targetSource !== "ranked") {
     const rankedSubset = getFilteredDataExcept("ranked");
     updateRankedSlicer(rankedSubset, currentState.ranked);
   }
 
-  // 3. Refresh Conference options based on all filters EXCEPT Conference
+  // 4. Refresh Conference options based on all filters EXCEPT Conference
   if (targetSource !== "conference") {
     const confSubset = getFilteredDataExcept("conference");
     updateConferenceSlicer(confSubset, currentState.conferences, currentState.isConfAll);
   }
 }
 
+// Updates Gender checkboxes availability, selection state, and dimmed label styling
+function updateGenderSlicer(filteredData, isDateChange = false) {
+  const availableGenders = new Set(
+    filteredData.map(d => d.Gender ? d.Gender.trim() : "").filter(Boolean)
+  );
+
+  document.querySelectorAll('.gender-filter').forEach(checkbox => {
+    const val = checkbox.value;
+    
+    // Support matching both short ("M", "W") and long ("Men's", "Women's") CSV values
+    const hasGames = availableGenders.has(val) ||
+                     (val === "Men's" && availableGenders.has("M")) ||
+                     (val === "Women's" && availableGenders.has("W")) ||
+                     (val === "M" && availableGenders.has("Men's")) ||
+                     (val === "W" && availableGenders.has("Women's"));
+
+    // Find the associated label element without modifying DOM structure
+    let label = checkbox.labels?.[0] || 
+                document.querySelector(`label[for="${checkbox.id}"]`) ||
+                checkbox.closest('label') ||
+                checkbox.parentElement.querySelector('label');
+
+    checkbox.disabled = !hasGames;
+
+    if (hasGames) {
+      // Default to checked on date selection change or when re-enabling from disabled state
+      if (isDateChange || checkbox.dataset.wasDisabled === "true") {
+        checkbox.checked = true;
+      }
+      checkbox.dataset.wasDisabled = "false";
+
+      if (label) {
+        label.style.opacity = "1";
+        label.style.pointerEvents = "auto";
+        label.style.filter = "none";
+      }
+    } else {
+      checkbox.checked = false;
+      checkbox.dataset.wasDisabled = "true";
+
+      if (label) {
+        // Apply 35% opacity directly so white/light text remains clearly legible on dark panels
+        label.style.opacity = "0.35";
+        label.style.pointerEvents = "none";
+      }
+    }
+  });
+}
+
 // Landing page to load on today or first upcoming day with games
-// Extract distinct dates chronologically and select today's date or the earliest upcoming date
 function getFirstAvailableDate(allData) {
   const now = new Date();
   const currentYear = now.getFullYear();
 
-  // Start of today in local time
   const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-  // Collect unique dates from CSV
   const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
 
   if (uniqueDates.length === 0) return null;
 
   const parsedDates = uniqueDates.map(dateStr => {
-    // Strip out day-of-week abbreviations if present (e.g., "Fri, Sep 11" -> "Sep 11")
     let cleanStr = dateStr.replace(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s*/i, '');
 
-    // If string lacks a 4-digit year, append current year to avoid defaulting to 2001
     if (!/\b20\d{2}\b/.test(cleanStr)) {
       cleanStr = `${cleanStr}, ${currentYear}`;
     }
 
     const parsed = new Date(cleanStr);
-    // Normalize time to midnight local time
     const normalized = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
 
     return { originalStr: dateStr, parsedDate: normalized };
   });
 
-  // Sort chronologically
   parsedDates.sort((a, b) => a.parsedDate - b.parsedDate);
 
-  // Find the first date in dataset that is >= startOfToday (includes today)
   const upcoming = parsedDates.find(item => item.parsedDate.getTime() >= startOfToday.getTime());
 
-  // Return today/upcoming date if found; otherwise fallback to the latest date available
   return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
 }
 
@@ -859,7 +908,7 @@ function renderChart(targetId, data, isDigital = false) {
     bargap: 0.15,                 
     autosize: true,
     margin: {
-      l: 84,
+      l: 85,
       r: 20,
       t: 60,
       b: 10
