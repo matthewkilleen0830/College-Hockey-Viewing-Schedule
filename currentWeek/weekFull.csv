@@ -9,7 +9,7 @@
 "Fri, Oct 02",Friday,New Hampshire at LIU,FloHockey,2:00 PM,4:30 PM,N,W,Hockey East,NEWHA
 "Fri, Oct 02",Friday,Union at Merrimack,ESPN+,3:00 PM,5:30 PM,N,W,ECAC,Hockey East
 "Fri, Oct 02",Friday,#14 Colgate at RIT,FloHockey,5:00 PM,7:30 PM,Y,W,ECAC,AHA
-"Fri, Oct 02",Friday,#5 Northeastern at RPI,ESPN+,1:00 PM,3:30 PM,Y,W,Hockey East,ECAC
+"Fri, Oct 02",Friday,#5 Northeastern at RPI,ESPN+,5:00 PM,7:30 PM,Y,W,Hockey East,ECAC
 "Fri, Oct 02",Friday,#9 Clarkson at #12 UConn,ESPN+,5:00 PM,7:30 PM,Y,W,ECAC,Hockey East
 "Fri, Oct 02",Friday,Boston University at #1 Wisconsin,B1G+,5:00 PM,7:30 PM,Y,W,Hockey East,WCHA
 "Fri, Oct 02",Friday,#7 Minnesota Duluth at Vermont,ESPN+,10:00 AM,12:30 PM,Y,W,WCHA,Hockey East
@@ -30,7 +30,6 @@
 "Fri, Oct 02",Friday,New Hampshire at #7 Quinnipiac,ESPN+,6:00 PM,8:30 PM,Y,M,Hockey East,ECAC
 "Fri, Oct 02",Friday,Stonehill at #9 Providence,ESPN+,6:00 PM,8:30 PM,Y,M,Independents,Hockey East
 "Fri, Oct 02",Friday,Ferris State at Canisius,FloHockey,6:00 PM,8:30 PM,N,M,CCHA,AHA
-"Fri, Oct 02",Friday,#14 Minnesota at #19 Michigan Tech,Midco Sports,6:07 PM,8:37 PM,Y,M,Big Ten,CCHA
 "Fri, Oct 02",Friday,Arizona State at Lindenwood,FloHockey,7:00 PM,9:30 PM,N,M,NCHC,Independents
 "Fri, Oct 02",Friday,LIU at #5 Minnesota Duluth,NCHC.tv,7:07 PM,9:37 PM,Y,M,Independents,NCHC
 "Fri, Oct 02",Friday,Robert Morris at #6 Wisconsin,B1G+,8:00 PM,10:30 PM,Y,M,AHA,Big Ten
@@ -41,6 +40,7 @@
 "Sat, Oct 03",Saturday,#20 Merrimack at #7 Quinnipiac,ESPN+,3:00 PM,5:30 PM,Y,M,Hockey East,ECAC
 "Sat, Oct 03",Saturday,Union at Army,FloHockey,3:00 PM,5:30 PM,N,M,ECAC,AHA
 "Sat, Oct 03",Saturday,Ottawa at Clarkson,ESPN+,3:00 PM,5:30 PM,N,M,,ECAC
+"Sat, Oct 03",Saturday,#14 Minnesota at #19 Michigan Tech,Midco Sports,3:00 PM,5:30 PM,Y,M,Big Ten,CCHA
 "Sat, Oct 03",Saturday,Maryville at St. Lawrence,ESPN+,4:00 PM,6:30 PM,N,M,Independents,ECAC
 "Sat, Oct 03",Saturday,Niagara at RIT,FloHockey,4:05 PM,6:35 PM,N,M,AHA,AHA
 "Sat, Oct 03",Saturday,Ferris State at Canisius,FloHockey,4:00 PM,6:30 PM,N,M,CCHA,AHA
@@ -49,7 +49,6 @@
 "Sat, Oct 03",Saturday,#12 Boston College at US NTDP,USAHockeyTV.com,5:00 PM,7:30 PM,Y,M,Hockey East,
 "Sat, Oct 03",Saturday,Miami (Ohio) at Northern Michigan,Midco Sports,5:07 PM,7:37 PM,N,M,NCHC,CCHA
 "Sat, Oct 03",Saturday,#2 Michigan at Bowling Green,Midco Sports,5:07 PM,7:37 PM,Y,M,Big Ten,CCHA
-"Sat, Oct 03",Saturday,#14 Minnesota at #19 Michigan Tech,Midco Sports,5:07 PM,7:37 PM,Y,M,Big Ten,CCHA
 "Sat, Oct 03",Saturday,Maine at Holy Cross,FloHockey,6:00 PM,8:30 PM,N,M,Hockey East,AHA
 "Sat, Oct 03",Saturday,LIU at #5 Minnesota Duluth,NCHC.tv,6:07 PM,8:37 PM,Y,M,Independents,NCHC
 "Sat, Oct 03",Saturday,St. Cloud State at Bemidji State,Midco Sports,6:07 PM,8:37 PM,N,M,NCHC,CCHA
@@ -75,3 +74,4 @@
 "Sat, Oct 03",Saturday,#2 Ohio State at St. Thomas,B1G+,2:00 PM,4:30 PM,Y,W,WCHA,WCHA
 "Sun, Oct 04",Sunday,Manitoba at #4 North Dakota,NCHC.tv,3:07 PM,5:37 PM,Y,M,,NCHC
 "Sun, Oct 04",Sunday,Lindenwood at Delaware,FloHockey,11:00 AM,1:30 PM,N,W,AHA,AHA
+"Sun, Oct 04",Sunday,#14 Minnesota at #19 Michigan Tech,Midco Sports,2:00 PM,4:30 PM,Y,M,Big Ten,CCHA
