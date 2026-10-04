@@ -864,7 +864,7 @@ function renderChart(targetId, data, isDigital = false) {
     //   '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
     // ];
 
-      range: [600, 1470],
+      range: [600, 1350],
       tickmode: 'array',
       tickvals: SHARED_X_AXIS_VALS,
       ticktext: SHARED_X_AXIS_TEXT,
@@ -875,7 +875,7 @@ function renderChart(targetId, data, isDigital = false) {
       tickcolor: 'rgba(0,0,0,0)',
       showgrid: true,
       gridcolor: 'rgba(212, 175, 55, 0.15)',
-      autorange: true,
+      autorange: false,
       automargin: false
     },
     yaxis: {
