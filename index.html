@@ -1,27 +1,18 @@
-<!-- DocType declaration -->
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Define header and page title -->
 <head>
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
 
-  <!-- =========================================================
-     PRIMARY SEO / SEARCH ENGINE METADATA
-     ========================================================= -->
-
-<title>College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four</title>
+  <title>College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four</title>
 
 <meta name="description" content="Find this week's college hockey TV schedule and viewing guide. See face-off times, ranked matchups, broadcast networks, streaming games, USCHO ranked teams, and conference schedules in one interactive dashboard.">
 <meta name="author" content="Matthew Killeen">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/">
-
-<!-- =========================================================
-     OPEN GRAPH / SOCIAL SHARING
-     ========================================================= -->
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
@@ -31,28 +22,15 @@
 <meta property="og:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/favicon.png">
 <meta property="og:image:alt" content="College hockey TV schedule and viewing guide dashboard">
 
-<!-- =========================================================
-     X / TWITTER CARD
-     ========================================================= -->
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="College Hockey TV Schedule & Viewing Guide | Road to the Frozen Four">
 <meta name="twitter:description" content="Interactive weekly college hockey TV and streaming schedule with puck drop times, ranked matchups, USCHO ranked teams, networks, and conference filters.">
 <meta name="twitter:image" content="https://matthewkilleen0830.github.io/College-Hockey-Viewing-Schedule/images/favicon.png">
 <meta name="twitter:image:alt" content="College hockey TV schedule and viewing guide dashboard">
 
-<!-- =========================================================
-     LANGUAGE / MOBILE
-     ========================================================= -->
+  <meta name="language" content="English">
 
-<meta name="language" content="English">
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-
-<!-- =========================================================
-     STRUCTURED DATA
-     ========================================================= -->
-
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -88,36 +66,34 @@
   gtag('config', 'G-PT6MQ1TDD7');
 </script>
 
-  <!-- Bootstrap Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Application Layout -->
   <div class="container-fluid px-1 py-3 main-wrapper">
 
-    <!-- Header Banner Image -->
     <header class="top-banner">
       <img src="images/headerBanner.png" alt="Header Banner for Dashboard">
     </header>
 
-    <div class="row g-3 flex-grow-1">
+    <div class="dashboard-body d-flex position-relative flex-grow-1">
 
-      <!-- Slicer Selection Controls Section -->
-      <div class="col-md-2 align-self-start">
+      <div class="sidebar-wrapper position-relative" id="sidebarWrapper">
+        
+        <button id="toggleFilterBtn" class="filter-toggle-btn" type="button" aria-label="Toggle Filters" title="Hide Filters">
+          <span id="toggleIcon" class="toggle-arrow">&#10094;</span>
+        </button>
+
         <div class="filter-panel">
           <h5 class="mb-3">Weekly Selections</h5>
 
-          <!-- Single-Select Date Slicer -->
           <div class="mb-3">
             <label for="dateFilter" class="form-label fw-semibold">Day/Date</label>
             <select id="dateFilter" class="form-select"></select>
           </div>
 
-          <!-- Gender Filter -->
+<!-- Gender Filter -->
           <div class="mb-3 checkbox-panel">
             <div class="slicer-container p-0 rounded">
               <div class="form-check">
@@ -136,40 +112,33 @@
             <div class="form-check d-flex align-items-center gap-2 ps-0">
               <input class="form-check-input ms-0" type="checkbox" id="rankedFilter">
               <label class="form-check-label fw-semibold mb-0" for="rankedFilter">
-                USCHO Ranked
+                USCHO Ranked Teams
               </label>
             </div>
           </div>
 
-          <!-- Multiple-Select Start Time Filter (Adaptive to Date) -->
           <div class="mb-3">
             <label for="timeFilter" class="form-label fw-semibold">Puck Drop</label>
             <div id="timeFilter" class="checkbox-panel"></div>
           </div>
 
-          <!-- Multi-Select Checkbox Conference Slicer (Adaptive to Date + Time + Ranked) -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Conference</label>
-            <div id="conferenceFilter" class="checkbox-panel">
-              <!-- Checkboxes dynamically rendered via JavaScript -->
-            </div>
+            <div id="conferenceFilter" class="checkbox-panel"></div>
           </div>
 
         </div>
       </div>
 
-      <!-- Main Dashboard Visualization Display -->
-      <div class="col-md-10 charts-column">
+      <div class="charts-column flex-grow-1" id="chartsColumn">
         
-        <!-- Linear Networks Chart Container -->
         <div class="chart-container top-chart" id="networkChartContainer">
-          <h6 class="mb-2 chart-title">Linear Broadcast Networks <i style="font-size: 0.7em;">(all times Central Time)</i></h6>
+          <h6 class="mb-2 chart-title">Linear Broadcast Networks <i style="font-size: 0.6em;">(Central Time)</i></h6>
           <div id="barChart" class="plotly-chart"></div>
         </div>
 
-        <!-- Streaming Networks Chart Container -->
         <div class="chart-container bottom-chart" id="digitalChartContainer">
-          <h6 class="mb-2 chart-title">Digital Streaming Platforms <i style="font-size: 0.7em;">(all times Central Time)</i></h6>
+          <h6 class="mb-2 chart-title">Digital Streaming Platforms <i style="font-size: 0.6em;">(Central Time)</i></h6>
           <div id="digitalChart" class="plotly-chart"></div>
         </div>
 
@@ -177,25 +146,52 @@
 
     </div>
   </div>
-</body>
-</html>
 
-  <!-- Enable D3.js and Plotly Dependencies -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-4.0.0.min.js"></script>
 
-  <!-- Dashboard Controller Script -->
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById("toggleFilterBtn");
+      const sidebar = document.getElementById("sidebarWrapper");
 
-    // =========================================================================
-    // GLOBAL CONSTANTS & CONFIGURATION
-    // =========================================================================
+      if (toggleBtn && sidebar) {
+        
+        if (window.innerWidth < 1200) {
+          sidebar.classList.add("collapsed");
+          toggleBtn.setAttribute("title", "Show Filters");
+        }
+
+        if (sidebar.classList.contains("collapsed")) {
+          toggleBtn.classList.add("attention-flash");
+          setTimeout(() => {
+            toggleBtn.classList.remove("attention-flash");
+          }, 2200);
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          sidebar.classList.toggle("collapsed");
+
+          const isCollapsed = sidebar.classList.contains("collapsed");
+          toggleBtn.setAttribute("title", isCollapsed ? "Show Filters" : "Hide Filters");
+
+          setTimeout(() => {
+            window.dispatchEvent(new Event("resize"));
+            const barChart = document.getElementById("barChart");
+            const digitalChart = document.getElementById("digitalChart");
+            if (window.Plotly) {
+              if (barChart && barChart.clientHeight > 0) Plotly.Plots.resize(barChart);
+              if (digitalChart && digitalChart.clientHeight > 0) Plotly.Plots.resize(digitalChart);
+            }
+          }, 320);
+        });
+      }
+    });
 
     // List of networks classified as streaming
     const DIGITAL_NETWORKS = ["ESPN+", "FloHockey", "NCHC.tv", "B1G+", "CCHA TV", "Peacock",
     "YouTube", "Midco Sports", "USAHockeyTV.com", "[NoLivestream]", "TBA", "hudl", "NEC FrontRow", "CACC Network"];
 
-    // Preferred Conference Display Priority
     const PREFERRED_CONF_ORDER = [
       "AHA",
       "Big Ten",
@@ -209,16 +205,10 @@
     ];
 
     // Shared X-Axis Time Config (Minutes from Midnight) for Vertical Alignment Across Charts
-    // const SHARED_X_AXIS_VALS = [780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
-    // const SHARED_X_AXIS_TEXT = [
-    //   '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
-    //   '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
-    // ];
-
-    const SHARED_X_AXIS_VALS = [600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
+    const SHARED_X_AXIS_VALS = [600, 660, 720, 780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440, 1500];
     const SHARED_X_AXIS_TEXT = [
       '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
-      '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
+      '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM', '1:00 AM'
     ];
 
     // Lookup Table mapping Home Teams to Secondary Brand Colors due to actual home white sweaters
@@ -245,17 +235,14 @@
 
     };
 
-// Cached DOM Reference Element map for performance optimization
+// Start of Backup
+
 const DOM = {
   dateFilter: document.getElementById("dateFilter"),
-  timeFilter: document.getElementById("timeFilter"),
   rankedFilter: document.getElementById("rankedFilter"),
+  timeFilter: document.getElementById("timeFilter"),
   conferenceFilter: document.getElementById("conferenceFilter")
 };
-
-// =========================================================================
-// DATA INITIALIZATION & EVENT LISTENERS
-// =========================================================================
 
 d3.csv("currentWeek/weekFull.csv", raw => {
   const clean = {};
@@ -267,47 +254,47 @@ d3.csv("currentWeek/weekFull.csv", raw => {
 }).then(data => {
   window.gameData = data;
 
-  // Initial render of all slicers & charts
   const initialDate = getFirstAvailableDate(window.gameData);
   updateDateSlicerOptions(window.gameData, initialDate);
   
-  refreshAllSlicersExcept(null, true);
+  refreshAllSlicersExcept();
   applyFilters();
 
-  // Primary Date Slicer Event Listener
-  DOM.dateFilter.addEventListener("change", () => {
-    refreshAllSlicersExcept("date", true);
+  setTimeout(() => {
+    window.dispatchEvent(new Event("resize"));
+    const barChart = document.getElementById("barChart");
+    const digitalChart = document.getElementById("digitalChart");
+    if (window.Plotly) {
+      if (barChart && barChart.clientHeight > 0) Plotly.Plots.resize(barChart);
+      if (digitalChart && digitalChart.clientHeight > 0) Plotly.Plots.resize(digitalChart);
+    }
+  }, 100);
+
+  DOM.dateFilter?.addEventListener("change", () => {
+    refreshAllSlicersExcept("date");
     applyFilters();
   });
 
-  // Attach event listeners to Gender checkboxes
-  document.querySelectorAll('.gender-filter').forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      refreshAllSlicersExcept("gender", false);
+  DOM.rankedFilter?.addEventListener("change", () => {
+    refreshAllSlicersExcept("top25");
+    applyFilters();
+  });
+
+  document.querySelectorAll(".gender-filter").forEach(cb => {
+    cb.addEventListener("change", () => {
+      refreshAllSlicersExcept("gender");
       applyFilters();
     });
   });
-
-  // Ranked Slicer Event Listener
-  DOM.rankedFilter.addEventListener("change", () => {
-    refreshAllSlicersExcept("ranked", false);
-    applyFilters();
-  });
 });
 
-// =========================================================================
-// BIDIRECTIONAL CROSS-FILTERING ARCHITECTURE
-// =========================================================================
-
-// Returns the active filter state across all slicers
 function getActiveSelections() {
   const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
-  const isRankedOnly = DOM.rankedFilter ? DOM.rankedFilter.checked : false;
+  const top25Only = DOM.rankedFilter ? (DOM.rankedFilter.checked && !DOM.rankedFilter.disabled) : false;
 
-  // Only consider enabled & checked gender options
   const selectedGenders = Array.from(
-    document.querySelectorAll('.gender-filter:checked:not(:disabled)')
-  ).map(cb => cb.value);
+    document.querySelectorAll(".gender-filter:checked:not(:disabled)")
+  ).map(cb => cb.value.toUpperCase());
 
   const timeAllChecked = document.getElementById("time_all")?.checked ?? true;
   const selectedTimes = timeAllChecked ? [] : Array.from(
@@ -321,8 +308,8 @@ function getActiveSelections() {
 
   return {
     date: selectedDate,
+    top25Only: top25Only,
     genders: selectedGenders,
-    ranked: isRankedOnly,
     times: selectedTimes,
     isTimeAll: timeAllChecked,
     conferences: selectedConferences,
@@ -330,47 +317,37 @@ function getActiveSelections() {
   };
 }
 
-// Returns a subset of gameData filtered by all slicers EXCEPT the one specified by 'excludedFilter'
 function getFilteredDataExcept(excludedFilter = null) {
   const state = getActiveSelections();
 
   return window.gameData.filter(d => {
-    // Date filter
+    // 1. Date Filter
     if (excludedFilter !== "date" && state.date && d.Date !== state.date) {
       return false;
     }
 
-    // Gender filter (M/W)
+    // 2. Gender Filter (Checks CSV column "Gender" for 'M' or 'W')
     if (excludedFilter !== "gender") {
       if (state.genders.length === 0) return false;
-      
-      const gameGender = d.Gender ? d.Gender.trim() : "";
-      const matchesGender = state.genders.some(selected => {
-        return selected === gameGender ||
-               (selected === "Men's" && gameGender === "M") ||
-               (selected === "Women's" && gameGender === "W") ||
-               (selected === "M" && gameGender === "Men's") ||
-               (selected === "W" && gameGender === "Women's");
-      });
-
-      if (!matchesGender) return false;
+      const gameGender = d.Gender?.trim().toUpperCase();
+      if (gameGender && !state.genders.includes(gameGender)) return false;
     }
 
-    // Puck Drop Time filter
+    // 3. AP Top 25 / USCHO Ranked Filter
+    if (excludedFilter !== "top25" && state.top25Only) {
+      const isTop25 = d.Ranked ? d.Ranked.trim().toUpperCase() === "Y" : false;
+      if (!isTop25) return false;
+    }
+
+    // 4. Time Filter
     if (excludedFilter !== "time") {
       if (!state.isTimeAll && state.times.length === 0) return false;
       if (!state.isTimeAll && !state.times.includes(d.Start_Time)) return false;
     }
 
-    // Ranked filter
-    if (excludedFilter !== "ranked" && state.ranked) {
-      if (d.Ranked !== "Y") return false;
-    }
-
-    // Conference filter
+    // 5. Conference Filter
     if (excludedFilter !== "conference") {
       if (!state.isConfAll && state.conferences.length === 0) return false;
-
       if (!state.isConfAll) {
         const vConf = d.Visitor_Conference?.trim();
         const hConf = d.Home_Conference?.trim();
@@ -382,89 +359,84 @@ function getFilteredDataExcept(excludedFilter = null) {
   });
 }
 
-// Re-computes available options for all slicers while preserving user selections where applicable
-function refreshAllSlicersExcept(targetSource = null, isDateChange = false) {
-  const currentState = getActiveSelections();
+function updateGenderSlicerState() {
+  const selectedDate = DOM.dateFilter ? DOM.dateFilter.value : null;
+  const dateGames = window.gameData.filter(d => !selectedDate || d.Date === selectedDate);
 
-  // 1. Refresh Gender options based on all filters EXCEPT Gender
-  if (targetSource !== "gender") {
-    const genderSubset = getFilteredDataExcept("gender");
-    updateGenderSlicer(genderSubset, isDateChange || targetSource === "date");
+  const hasMens = dateGames.some(d => d.Gender?.trim().toUpperCase() === "M");
+  const hasWomens = dateGames.some(d => d.Gender?.trim().toUpperCase() === "W");
+
+  const genderM = document.getElementById("gender-m");
+  const genderW = document.getElementById("gender-w");
+
+  if (genderM) {
+    if (!hasMens) {
+      genderM.checked = false;
+      genderM.disabled = true;
+    } else {
+      if (genderM.disabled) genderM.checked = true;
+      genderM.disabled = false;
+    }
   }
 
-  // 2. Refresh Time options based on all filters EXCEPT Time
+  if (genderW) {
+    if (!hasWomens) {
+      genderW.checked = false;
+      genderW.disabled = true;
+    } else {
+      if (genderW.disabled) genderW.checked = true;
+      genderW.disabled = false;
+    }
+  }
+}
+
+function updateRankedToggleState() {
+  if (!DOM.rankedFilter) return;
+
+  const state = getActiveSelections();
+  // Check if games on the selected date matching active genders feature ranked teams
+  const dateGames = window.gameData.filter(d => {
+    if (state.date && d.Date !== state.date) return false;
+    if (state.genders.length > 0) {
+      const gameGender = d.Gender?.trim().toUpperCase();
+      if (gameGender && !state.genders.includes(gameGender)) return false;
+    }
+    return true;
+  });
+
+  const hasTop25 = dateGames.some(d => d.Ranked && d.Ranked.trim().toUpperCase() === "Y");
+
+  if (!hasTop25) {
+    DOM.rankedFilter.checked = false;
+    DOM.rankedFilter.disabled = true;
+  } else {
+    DOM.rankedFilter.disabled = false;
+  }
+}
+
+function refreshAllSlicersExcept(targetSource = null) {
+  // 1. Enable/disable gender checkboxes based on games played on selected date
+  updateGenderSlicerState();
+
+  // 2. Enable/disable ranked toggle based on available games for selected date and gender
+  updateRankedToggleState();
+
+  const currentState = getActiveSelections();
+
   if (targetSource !== "time") {
     const timeSubset = getFilteredDataExcept("time");
     updateTimeSlicer(timeSubset, currentState.times, currentState.isTimeAll);
   }
 
-  // 3. Refresh Ranked checkbox toggle availability based on all filters EXCEPT Ranked
-  if (targetSource !== "ranked") {
-    const rankedSubset = getFilteredDataExcept("ranked");
-    updateRankedSlicer(rankedSubset, currentState.ranked);
-  }
-
-  // 4. Refresh Conference options based on all filters EXCEPT Conference
   if (targetSource !== "conference") {
     const confSubset = getFilteredDataExcept("conference");
     updateConferenceSlicer(confSubset, currentState.conferences, currentState.isConfAll);
   }
 }
 
-// Updates Gender checkboxes availability, selection state, and dimmed label styling
-function updateGenderSlicer(filteredData, isDateChange = false) {
-  const availableGenders = new Set(
-    filteredData.map(d => d.Gender ? d.Gender.trim() : "").filter(Boolean)
-  );
-
-  document.querySelectorAll('.gender-filter').forEach(checkbox => {
-    const val = checkbox.value;
-    
-    // Support matching both short ("M", "W") and long ("Men's", "Women's") CSV values
-    const hasGames = availableGenders.has(val) ||
-                     (val === "Men's" && availableGenders.has("M")) ||
-                     (val === "Women's" && availableGenders.has("W")) ||
-                     (val === "M" && availableGenders.has("Men's")) ||
-                     (val === "W" && availableGenders.has("Women's"));
-
-    // Find the associated label element without modifying DOM structure
-    let label = checkbox.labels?.[0] || 
-                document.querySelector(`label[for="${checkbox.id}"]`) ||
-                checkbox.closest('label') ||
-                checkbox.parentElement.querySelector('label');
-
-    checkbox.disabled = !hasGames;
-
-    if (hasGames) {
-      // Default to checked on date selection change or when re-enabling from disabled state
-      if (isDateChange || checkbox.dataset.wasDisabled === "true") {
-        checkbox.checked = true;
-      }
-      checkbox.dataset.wasDisabled = "false";
-
-      if (label) {
-        label.style.opacity = "1";
-        label.style.pointerEvents = "auto";
-        label.style.filter = "none";
-      }
-    } else {
-      checkbox.checked = false;
-      checkbox.dataset.wasDisabled = "true";
-
-      if (label) {
-        // Apply 35% opacity directly so white/light text remains clearly legible on dark panels
-        label.style.opacity = "0.35";
-        label.style.pointerEvents = "none";
-      }
-    }
-  });
-}
-
-// Landing page to load on today or first upcoming day with games
 function getFirstAvailableDate(allData) {
   const now = new Date();
   const currentYear = now.getFullYear();
-
   const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
   const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
@@ -491,7 +463,6 @@ function getFirstAvailableDate(allData) {
   return upcoming ? upcoming.originalStr : parsedDates[parsedDates.length - 1].originalStr;
 }
 
-// Populate Date selection dropdown
 function updateDateSlicerOptions(allData, selectedDate) {
   const uniqueDates = Array.from(new Set(allData.map(d => d.Date))).filter(Boolean);
 
@@ -519,7 +490,6 @@ function updateDateSlicerOptions(allData, selectedDate) {
   }
 }
 
-// Build multi-select Puck Drop Time checkboxes dynamically
 function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true) {
   const uniqueTimes = Array.from(new Set(filteredData.map(d => d.Start_Time)))
     .filter(Boolean)
@@ -532,7 +502,6 @@ function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true)
     return;
   }
 
-  // Master Toggle Element
   const allDiv = document.createElement("div");
   allDiv.className = "form-check border-bottom pb-1 mb-2";
   allDiv.innerHTML = `
@@ -541,7 +510,6 @@ function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true)
   `;
   DOM.timeFilter.appendChild(allDiv);
 
-  // Individual Time Checkboxes
   uniqueTimes.forEach((time, idx) => {
     const isChecked = isAllChecked || selectedTimes.includes(time);
     const div = document.createElement("div");
@@ -553,7 +521,6 @@ function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true)
     DOM.timeFilter.appendChild(div);
   });
 
-  // Attach Event Listeners
   const allCheckbox = document.getElementById("time_all");
   const itemCheckboxes = DOM.timeFilter.querySelectorAll(".time-checkbox");
 
@@ -573,15 +540,6 @@ function updateTimeSlicer(filteredData, selectedTimes = [], isAllChecked = true)
   });
 }
 
-// Update Ranked Matches checkbox state & availability based on data context
-function updateRankedSlicer(filteredData, wasChecked) {
-  const hasRankedGames = filteredData.some(d => d.Ranked === "Y");
-  
-  DOM.rankedFilter.checked = wasChecked && hasRankedGames;
-  DOM.rankedFilter.disabled = !hasRankedGames;
-}
-
-// Build individual conference checkboxes dynamically
 function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChecked = true) {
   const extractedConfs = new Set();
   filteredData.forEach(d => {
@@ -643,7 +601,6 @@ function updateConferenceSlicer(filteredData, selectedConferences = [], isAllChe
   });
 }
 
-// Evaluate all active control selections and trigger chart re-rendering
 function applyFilters() {
   const filtered = getFilteredDataExcept(null);
 
@@ -654,271 +611,242 @@ function applyFilters() {
   renderChart('digitalChart', digitalData, true);
 }
 
-// =========================================================================
-// UTILITY HELPER FUNCTIONS
-// =========================================================================
+    function getHomeTeamColor(matchup) {
+      if (!matchup) return '#D3D3D3';
 
-// Resolve the primary brand hex color for the home team by searching TEAM_COLORS for exact key matches
-function getHomeTeamColor(matchup) {
-  if (!matchup) return '#D3D3D3';
+      const parts = matchup.split(/\s+(?:at|vs\.?)\s+/i);
+      if (parts.length < 2) return '#D3D3D3';
 
-  // Split text string by " at " or " vs " / " vs. " (case-insensitive) to isolate the home team segment
-  const parts = matchup.split(/\s+(?:at|vs\.?)\s+/i);
-  if (parts.length < 2) return '#D3D3D3';
+      const homeTeamRaw = parts[parts.length - 1].trim();
 
-  const homeTeamRaw = parts[parts.length - 1].trim();
-
-  // Direct exact lookup on the raw home team string
-  if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
-    return TEAM_COLORS[homeTeamRaw];
-  }
-
-  // Strip rank prefixes (e.g. "No. 5", "#12") and parenthetical strings (e.g. "(4-0)", "(OT)")
-  let homeTeamClean = homeTeamRaw
-    .replace(/^(?:No\.\s*\d+|#\d+)\s+/i, '')
-    .replace(/\s*\([^)]*\)/g, '')
-    .trim();
-
-  // Direct exact lookup on the cleaned home team name
-  if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamClean)) {
-    return TEAM_COLORS[homeTeamClean];
-  }
-
-  // Default fallback color (light gray) if no exact key matches are found in TEAM_COLORS
-  return '#D3D3D3';
-}
-
-// Convert standard AM/PM time strings into absolute minute integers from midnight
-function timeToMinutes(t) {
-  if (!t) return 0;
-  const [time, ampm] = t.split(' ');
-  let [h, m] = time.split(':').map(Number);
-  if (ampm === 'PM' && h !== 12) h += 12;
-  if (ampm === 'AM' && h === 12) h = 0;
-  return h * 60 + m;
-}
-
-// Allocates overlapping games on the same network to stacked sub-rows
-function resolveOverlapSubRows(games) {
-  games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
-
-  const subRowEndTimes = [];
-  const assignedGames = [];
-
-  games.forEach(game => {
-    const start = timeToMinutes(game.Start_Time);
-    const end = timeToMinutes(game.End_Time);
-    const effectiveEnd = end >= start ? end : end + 1440;
-
-    let rowIndex = -1;
-    for (let i = 0; i < subRowEndTimes.length; i++) {
-      if (subRowEndTimes[i] <= start) {
-        rowIndex = i;
-        break;
+      if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamRaw)) {
+        return TEAM_COLORS[homeTeamRaw];
       }
+
+      let homeTeamClean = homeTeamRaw
+        .replace(/^(?:No\.\s*\d+|#\d+)\s+/i, '')
+        .replace(/\s*\([^)]*\)/g, '')
+        .trim();
+
+      if (Object.prototype.hasOwnProperty.call(TEAM_COLORS, homeTeamClean)) {
+        return TEAM_COLORS[homeTeamClean];
+      }
+
+      return '#D3D3D3';
     }
 
-    if (rowIndex === -1) {
-      subRowEndTimes.push(effectiveEnd);
-      rowIndex = subRowEndTimes.length - 1;
-    } else {
-      subRowEndTimes[rowIndex] = effectiveEnd;
+    function timeToMinutes(t) {
+      if (!t) return 0;
+      const [time, ampm] = t.split(' ');
+      let [h, m] = time.split(':').map(Number);
+      if (ampm === 'PM' && h !== 12) h += 12;
+      if (ampm === 'AM' && h === 12) h = 0;
+      return h * 60 + m;
     }
 
-    assignedGames.push({
-      ...game,
-      subRowIndex: rowIndex
-    });
-  });
+    function resolveOverlapSubRows(games) {
+      games.sort((a, b) => timeToMinutes(a.Start_Time) - timeToMinutes(b.Start_Time));
 
-  return { assignedGames, totalSubRows: subRowEndTimes.length };
-}
+      const subRowEndTimes = [];
+      const assignedGames = [];
 
-// =========================================================================
-// CHART RENDER ENGINE (Plotly.js)
-// =========================================================================
+      games.forEach(game => {
+        const start = timeToMinutes(game.Start_Time);
+        const end = timeToMinutes(game.End_Time);
+        const effectiveEnd = end >= start ? end : end + 1440;
 
-function renderChart(targetId, data, isDigital = false) {
-  const container = document.getElementById(targetId);
+        let rowIndex = -1;
+        for (let i = 0; i < subRowEndTimes.length; i++) {
+          if (subRowEndTimes[i] <= start) {
+            rowIndex = i;
+            break;
+          }
+        }
 
-  // Empty / No Data Fallback
-  if (!data || data.length === 0) {
-    container.style.height = '120px';
-    Plotly.newPlot(targetId, [], {
-      paper_bgcolor: 'rgba(0,0,0,0)',
-      plot_bgcolor: 'rgba(0,0,0,0)',
-      title: {
-        text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
-        font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
-      },
-      xaxis: { visible: false },
-      yaxis: { visible: false },
-      showlegend: false
-    }, { responsive: true, displayModeBar: false });
-    return;
-  }
+        if (rowIndex === -1) {
+          subRowEndTimes.push(effectiveEnd);
+          rowIndex = subRowEndTimes.length - 1;
+        } else {
+          subRowEndTimes[rowIndex] = effectiveEnd;
+        }
 
-  const grouped = d3.group(data, d => d.TV_Network);
-  const traces = [];
-  const yTicks = [];
-  const yTickLabels = [];
+        assignedGames.push({
+          ...game,
+          subRowIndex: rowIndex
+        });
+      });
 
-  // Helper to bold ranked teams (e.g., "#19 Ohio State" or "#12 Minnesota State")
-  function formatMatchupText(text) {
-    if (!text) return '';
-    // Replaces "#12 Team Name" with "<b>#12 Team Name</b>"
-    return text.replace(/(#\d+\s+[\w\s.&'-]+?)(?=\s+at|\s+vs|$)/gi, '<b>$1</b>');
-  }
-
-  grouped.forEach((games, network) => {
-    const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
-
-    for (let i = 0; i < totalSubRows; i++) {
-      const rowKey = `${network}_row_${i}`;
-      yTicks.push(rowKey);
-      yTickLabels.push(network);
+      return { assignedGames, totalSubRows: subRowEndTimes.length };
     }
 
-    assignedGames.forEach(game => {
-      const start = timeToMinutes(game.Start_Time);
-      const end = timeToMinutes(game.End_Time);
-      const duration = end >= start ? (end - start) : (end + 1440 - start);
-      const teamHexColor = getHomeTeamColor(game.Matchup);
-      const internalRowKey = `${network}_row_${game.subRowIndex}`;
-      const formattedLabel = formatMatchupText(game.Matchup);
+    function renderChart(targetId, data, isDigital = false) {
+      const container = document.getElementById(targetId);
 
-      traces.push({
-        type: 'bar',
-        orientation: 'h',
-        y: [internalRowKey],
-        x: [duration],
-        base: [start],
-        name: game.Matchup,
-        marker: { 
-          color: teamHexColor,
-          line: { color: '#7c9ca4', width: 1.5 },
-          cornerradius: "45%"
-        },
-        text: [formattedLabel],
-        textposition: 'inside',
-        insidetextanchor: 'middle',
-        insidetextfont: { 
-          family: 'Segoe UI, Arial, sans-serif',
-          color: '#ffffff'
-        },
-
-        // Larger hoverover tooltips
-        hoverlabel: {
-          font: {
-            family: 'Segoe UI, Arial, sans-serif',
-            size: 18,
+      if (!data || data.length === 0) {
+        container.style.height = '120px';
+        Plotly.newPlot(targetId, [], {
+          paper_bgcolor: 'rgba(0,0,0,0)',
+          plot_bgcolor: 'rgba(0,0,0,0)',
+          title: {
+            text: isDigital ? 'No streaming games matching selections.' : 'No network games matching selections.',
+            font: { size: 16, color: '#f3e5ab', family: 'Segoe UI, Arial, sans-serif' }
           },
-          bgcolor: teamHexColor,
-        },       
+          xaxis: { visible: false },
+          yaxis: { visible: false },
+          showlegend: false
+        }, { responsive: true, displayModeBar: false });
+        return;
+      }
 
-        hovertemplate:
+      const grouped = d3.group(data, d => d.TV_Network);
+      const traces = [];
+      const yTicks = [];
+      const yTickLabels = [];
+
+      function formatMatchupText(text) {
+        if (!text) return '';
+        return text.replace(/(#\d+\s+[\w\s.&'-]+?)(?=\s+at|\s+vs|$)/gi, '<b>$1</b>');
+      }
+
+      grouped.forEach((games, network) => {
+        const { assignedGames, totalSubRows } = resolveOverlapSubRows(games);
+
+        for (let i = 0; i < totalSubRows; i++) {
+          const rowKey = `${network}_row_${i}`;
+          yTicks.push(rowKey);
+          yTickLabels.push(network);
+        }
+
+        assignedGames.forEach(game => {
+          const start = timeToMinutes(game.Start_Time);
+          const end = timeToMinutes(game.End_Time);
+          const duration = end >= start ? (end - start) : (end + 1440 - start);
+          const teamHexColor = getHomeTeamColor(game.Matchup);
+          const internalRowKey = `${network}_row_${game.subRowIndex}`;
+          const formattedLabel = formatMatchupText(game.Matchup);
+
+          traces.push({
+            type: 'bar',
+            orientation: 'h',
+            y: [internalRowKey],
+            x: [duration],
+            base: [start],
+            name: game.Matchup,
+            textfont: {
+              size: 16,
+            },
+            marker: { 
+              color: teamHexColor,
+              line: { color: '#7c9ca4', width: 1.5 },
+              cornerradius: "45%"
+            },
+            text: [formattedLabel],
+            textposition: 'inside',
+            insidetextanchor: 'middle',
+            insidetextfont: { 
+              family: 'Segoe UI, Arial, sans-serif',
+              color: '#ffffff'
+            },
+            hoverlabel: {
+              font: {
+                family: 'Segoe UI, Arial, sans-serif',
+                size: 20,
+              },
+              bgcolor: teamHexColor
+            }, 
+
+            hovertemplate:
         '<b>%{text}</b><br>' +
         'Category: %{customdata[1]}<br>' +
         'Broadcast Outlet: ' + network + '<br>' +
         'Puck Drop: %{customdata[0]}<extra></extra>',
-        customdata: [[
-          game.Start_Time, 
-          game.Gender === 'W' || game.Gender === 'F' ? "Women's" : "Men's"
-        ]]
+            customdata: [[
+              game.Start_Time,
+              game.Gender === 'W' || game.Gender === 'F' ? "Women's" : "Men's" 
+            ]]
+          });
+        });
       });
+
+      const ROW_HEIGHT = 35;
+      const TOP_AXIS_PADDING = 80;
+      const totalRows = yTicks.length;
+      
+      const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_AXIS_PADDING;
+
+      container.style.height = `${calculatedPlotHeight}px`;
+
+      const layout = {
+        height: calculatedPlotHeight,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        barmode: 'stack',
+        bargap: 0.15,                 
+        autosize: true,
+        margin: {
+          l: 89,
+          r: 20,
+          t: 60,
+          b: 10
+        },
+        dragmode: false,
+        xaxis: {
+          fixedrange: true,
+          side: 'top',
+          type: 'linear',
+          // range: [600, 1350],
+          tickmode: 'array',
+          tickvals: SHARED_X_AXIS_VALS,
+          ticktext: SHARED_X_AXIS_TEXT,
+          tickangle: -30,
+          tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
+          ticks: 'outside',
+          ticklen: 10,
+          tickcolor: 'rgba(0,0,0,0)',
+          showgrid: true,
+          gridcolor: 'rgba(212, 175, 55, 0.15)',
+          autorange: true,
+          autorangeoptions: {
+            maxallowed: 1380
+          },
+          automargin: false
+        },
+        yaxis: {
+          fixedrange: true,
+          ticksuffix: '',
+          autorange: 'reversed',
+          ticks: 'outside',
+          ticklen: 8,
+          tickcolor: 'rgba(0,0,0,0)',
+          tickmode: 'array',
+          tickvals: yTicks,
+          ticktext: yTickLabels,
+          tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' }
+        },
+        showlegend: false
+      };
+
+      const config = { responsive: true, displayModeBar: false };
+
+      Plotly.newPlot(targetId, traces, layout, config);
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const plotlyContainers = document.querySelectorAll('.plotly-chart');
+        plotlyContainers.forEach(container => {
+          if (window.Plotly && container.clientHeight > 0) {
+            Plotly.Plots.resize(container);
+          }
+        });
+      }, 100);
     });
-  });
-
-  // Strict Row Height Math
-  const ROW_HEIGHT = 30;
-  const TOP_AXIS_PADDING = 80;
-  const totalRows = yTicks.length;
-  
-  const calculatedPlotHeight = (totalRows * ROW_HEIGHT) + TOP_AXIS_PADDING;
-
-  container.style.height = `${calculatedPlotHeight}px`;
-
-  const layout = {
-    height: calculatedPlotHeight,
-    paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor: 'rgba(0,0,0,0)',
-    barmode: 'stack',
-    bargap: 0.15,                 
-    autosize: true,
-    margin: {
-      l: 85,
-      r: 20,
-      t: 60,
-      b: 10
-    },
-    dragmode: false,
-    xaxis: {
-      fixedrange: true,
-      side: 'top',
-      type: 'linear',
-
-      // Shared X-Axis Time Config for reference (Minutes from Midnight)
-    // const SHARED_X_AXIS_VALS = [780, 840, 900, 960, 1020, 1080, 1140, 1200, 1260, 1320, 1380, 1440];
-    // const SHARED_X_AXIS_TEXT = [
-    //   '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', 
-    //   '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM', '10:00 PM', '11:00 PM', '12:00 AM'
-    // ];
-
-      range: [600, 1290],
-      tickmode: 'array',
-      tickvals: SHARED_X_AXIS_VALS,
-      ticktext: SHARED_X_AXIS_TEXT,
-      tickangle: -30,
-      tickfont: { family: 'Segoe UI, Arial, sans-serif', size: 10, color: '#f3e5ab' },
-      ticks: 'outside',
-      ticklen: 10,
-      tickcolor: 'rgba(0,0,0,0)',
-      showgrid: true,
-      gridcolor: 'rgba(212, 175, 55, 0.15)',
-      autorange: false,
-      automargin: false
-    },
-    yaxis: {
-      fixedrange: true,
-      ticksuffix: '   ',
-      autorange: 'reversed',
-      ticks: 'outside',
-      ticklen: 8,
-      tickcolor: 'rgba(0,0,0,0)',
-      tickmode: 'array',
-      tickvals: yTicks,
-      ticktext: yTickLabels,
-      tickfont: { family: 'Segoe UI, Arial, sans-serif', color: '#f3e5ab' },
-      automargin: false
-    },
-    showlegend: false
-  };
-
-  const config = { responsive: true, displayModeBar: false };
-
-  Plotly.newPlot(targetId, traces, layout, config);
-}
-
-// Debounced window resize handler
-let resizeTimer;
-window.addEventListener('resize', function() {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    const plotlyContainers = document.querySelectorAll('.plotly-chart');
-    plotlyContainers.forEach(container => {
-      if (window.Plotly && container.clientHeight > 0) {
-        Plotly.Plots.resize(container);
-      }
-    });
-  }, 100);
-});
   </script>
 
-<!-- Copyright Footer -->
   <footer class="footer-copyright">
     &copy; Matthew Killeen
   </footer>
-</body>
-
 </body>
 </html>
